@@ -6,5 +6,6 @@ COPY barbershop /usr/share/nginx/html/barbershop
 COPY spa /usr/share/nginx/html/spa
 COPY penginapan /usr/share/nginx/html/penginapan
 COPY katering /usr/share/nginx/html/katering
+COPY gym /usr/share/nginx/html/gym
 COPY font /usr/share/nginx/html/font
 EXPOSE 80

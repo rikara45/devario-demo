@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#FBF6EF">
-<title>Gym Cakra, Cileunyi</title>
-<meta name="description" content="Harga, jam buka, jadwal kelas, alamat, dan cara menghubungi Gym Cakra.">
+<title>Gym Cakra, booking</title>
+<meta name="description" content="Pesan sesi latihan, pilih trainer, tanggal, dan jam di Gym Cakra.">
 <link rel="preload" href="/font/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+@font-face{font-family:Archivo;font-style:normal;font-weight:400 800;font-stretch:62% 125%;font-display:swap;src:url(/font/archivo-latin.woff2) format('woff2')}
 @font-face{font-family:Archivo;font-style:normal;font-weight:400 800;font-stretch:62% 125%;font-display:swap;src:url(/font/archivo-latin.woff2) format('woff2')}
 @font-face{font-family:'Fraunces';font-style:normal;font-weight:500 700;font-display:swap;src:url(/font/fraunces-latin.woff2) format('woff2')}
 @font-face{font-family:'Fraunces';font-style:italic;font-weight:500 600;font-display:swap;src:url(/font/fraunces-italic-latin.woff2) format('woff2')}
@@ -40,112 +41,119 @@
   --pole-tinggi:8px;
   --pole:linear-gradient(90deg,var(--sinyal),#E0A33C 60%,var(--sinyal-lembut));
 }
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-padding-top:104px;background:var(--latar);accent-color:var(--sinyal)}
-@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
-body{margin:0;overflow-x:clip;background:var(--latar);color:var(--tinta);font-family:Archivo,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.55;padding-bottom:calc(84px + env(safe-area-inset-bottom))}
-h1,h2,h3,p,ul,ol,dl,dd,figure{margin:0}
-ul,ol{padding:0;list-style:none}
-a{color:inherit}
-svg{display:block;flex:none}
-:focus-visible{outline:3px solid var(--fokus);outline-offset:2px}
-::selection{background:var(--sinyal);color:var(--di-atas-sinyal)}
-[hidden]{display:none !important}
-.wadah{width:100%;max-width:760px;margin:0 auto;padding:0 16px}
-.ikon{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+https://devario.rioeka.com
+.pesan{padding:16px 16px 16px}
+.kartu.pesan-buka > h3{font-size:20px;font-weight:800;line-height:1.2;letter-spacing:0;text-transform:none;color:var(--tinta)}
+.pesan-buka p{margin:8px 0 16px;max-width:52ch;color:var(--tinta-redup)}
+.pesan-buka .tombol{width:100%}
+@media (min-width:520px){.pesan-buka .tombol{width:auto}}
+.langkah-kepala{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.langkah-no{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--tinta-redup)}
+.langkah-nama{font-size:13px;font-weight:600;color:var(--tinta-redup)}
+.progres{height:6px;margin:10px 0 20px;border-radius:99px;background:var(--kartu-turun);overflow:hidden}
+.progres i{display:block;height:100%;width:0;border-radius:99px;background:var(--sinyal);transition:width .3s}
+.panel h3{font-size:24px;font-weight:var(--h-berat);font-stretch:var(--h-lebar);text-transform:var(--h-huruf);letter-spacing:var(--h-ls);line-height:1.1}
+.panel h3:focus{outline:0}
+.panel .tip{margin:6px 0 14px;font-size:14px;color:var(--tinta-redup)}
+.sub{margin:18px 0 8px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta-redup)}
+.opsi-daftar{display:grid;gap:8px}
+.opsi{display:block;position:relative}
+.opsi input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.opsi-kotak{display:grid;grid-template-columns:auto 1fr auto;gap:2px 12px;align-items:center;min-height:64px;padding:12px 14px;border:2px solid var(--garis);border-radius:var(--r-kecil);background:var(--kartu);cursor:pointer;transition:border-color .15s,background-color .15s}
+.opsi-kotak:hover{border-color:var(--garis-kuat)}
+.opsi-tanda{grid-row:1 / 3;display:grid;place-items:center;width:24px;height:24px;border:2px solid var(--garis-kuat);border-radius:50%}
+.opsi-tanda::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--di-atas-sinyal);transform:scale(0);transition:transform .15s}
+.opsi-nama{grid-column:2;font-weight:700}
+.opsi-ket{grid-column:2 / 4;font-size:14px;color:var(--tinta-redup)}
+.opsi-harga{grid-column:3;grid-row:1;font-weight:700;white-space:nowrap}
+.opsi.cek .opsi-tanda{border-radius:6px}
+.opsi.cek .opsi-tanda::after{width:6px;height:11px;margin-top:-2px;border-radius:0;background:none;border:solid var(--di-atas-sinyal);border-width:0 2.5px 2.5px 0;transform:rotate(45deg) scale(0)}
+.opsi.cek input:checked + .opsi-kotak .opsi-tanda::after{transform:rotate(45deg) scale(1)}
+.opsi input:disabled + .opsi-kotak{border-style:dashed;background:var(--kartu-turun);cursor:not-allowed}
+.opsi input:disabled + .opsi-kotak:hover{border-color:var(--garis)}
+.opsi input:disabled + .opsi-kotak .opsi-nama,.opsi input:disabled + .opsi-kotak .opsi-tanda{opacity:.55}
+.info-stylist{padding:10px 12px;border-left:3px solid var(--sinyal);background:var(--sinyal-lembut);border-radius:var(--r-kecil);color:var(--tinta)}
+.opsi input:checked + .opsi-kotak{border-color:var(--sinyal);background:var(--sinyal-lembut)}
+.opsi input:checked + .opsi-kotak .opsi-tanda{border-color:var(--sinyal);background:var(--sinyal)}
+.opsi input:checked + .opsi-kotak .opsi-tanda::after{transform:scale(1)}
+.opsi input:focus-visible + .opsi-kotak{outline:3px solid var(--fokus);outline-offset:2px}
 
-.tombol{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 22px;border:2px solid var(--sinyal);border-radius:var(--r-tombol);background:var(--sinyal);color:var(--di-atas-sinyal);font:inherit;font-weight:700;text-decoration:none;text-align:center;cursor:pointer;transition:background-color .15s,border-color .15s}
-.tombol:hover{background:var(--sinyal-gelap);border-color:var(--sinyal-gelap)}
-.tombol.garis{background:transparent;border-color:var(--garis-kuat);color:var(--tinta)}
-.tombol.garis:hover{background:var(--kartu-turun)}
-.tombol[aria-disabled="true"]{background:var(--kartu-turun);border-color:var(--kartu-turun);color:var(--tinta-redup);cursor:not-allowed}
-.tombol[aria-busy="true"]{cursor:progress}
+.hari-strip{position:relative;display:flex;gap:8px;overflow-x:auto;margin:0 -16px;padding:4px 16px 12px;scroll-snap-type:x proximity;scrollbar-width:thin}
+.hari{flex:0 0 70px;display:grid;place-content:center;min-height:80px;padding:6px 4px;border:2px solid var(--garis);border-radius:var(--r-kecil);background:var(--kartu);color:var(--tinta);font:inherit;text-align:center;line-height:1.2;cursor:pointer;scroll-snap-align:start}
+.hari:hover:not(:disabled){border-color:var(--garis-kuat)}
+.hari .hr{font-size:12px;font-weight:600;color:var(--tinta-redup)}
+.hari .tg{font-size:24px;font-weight:800}
+.hari .bl{font-size:12px;color:var(--tinta-redup)}
+.hari[aria-pressed="true"]{border-color:var(--sinyal);background:var(--sinyal);color:var(--di-atas-sinyal)}
+.hari[aria-pressed="true"] .hr,.hari[aria-pressed="true"] .bl{color:var(--di-atas-sinyal)}
+.hari:disabled{border-style:dashed;cursor:not-allowed;opacity:.6}
+.petunjuk{font-size:13px;color:var(--tinta-redup)}
+.jam-label{margin:12px 0 10px;font-weight:700}
+.jam-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+@media (min-width:480px){.jam-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.jam-grid button{min-height:52px;border:2px solid var(--garis);border-radius:var(--r-kecil);background:var(--kartu);color:var(--tinta);font:inherit;font-weight:600;font-variant-numeric:tabular-nums;cursor:pointer}
+.jam-grid button:hover:not(:disabled){border-color:var(--garis-kuat)}
+.jam-grid button[aria-pressed="true"]{border-color:var(--sinyal);background:var(--sinyal);color:var(--di-atas-sinyal)}
+.jam-grid button:disabled{border-style:dashed;background:transparent;color:var(--tinta-redup);text-decoration:line-through;cursor:not-allowed}
 
-.atas{position:sticky;top:0;z-index:30;background:var(--latar);border-bottom:1px solid var(--garis)}
-.atas .wadah{display:flex;align-items:center;gap:10px;min-height:56px}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.balik{display:inline-flex;align-items:center;gap:2px;min-height:44px;padding:0 12px 0 6px;margin-left:-6px;border-radius:var(--r-tombol);font-weight:600;font-size:15px;text-decoration:none;white-space:nowrap}
-.balik:hover{background:var(--kartu-turun)}
-.nama-atas{margin-left:auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700;font-size:15px;color:var(--tinta-redup)}
+.kolom{display:grid;gap:6px;margin-top:14px}
+.kolom label{font-weight:600}
+.kolom input{min-height:52px;padding:0 14px;border:2px solid var(--garis-kuat);border-radius:var(--r-kecil);background:var(--kartu);color:var(--tinta);font:inherit;font-size:16px}
+.kolom input::placeholder{color:var(--tinta-redup);opacity:.8}
+.kolom input[aria-invalid="true"]{border-color:var(--salah)}
+.kolom .bantu{font-size:14px;color:var(--tinta-redup)}
+.kolom .salah{font-size:14px;font-weight:600;color:var(--salah)}
 
-.pole{height:var(--pole-tinggi);background:var(--pole)}
-.hero{padding:28px 0 4px}
-.eyebrow{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta-redup)}
-.hero h1{margin:8px 0 14px;font-size:clamp(36px,11vw,56px);font-weight:var(--h-berat);font-stretch:var(--h-lebar);text-transform:var(--h-huruf);letter-spacing:var(--h-ls);line-height:1.02;text-wrap:balance}
-.status{display:inline-flex;align-items:center;gap:9px;padding:8px 14px;border:1px solid var(--garis);border-radius:999px;background:var(--kartu);font-size:15px;font-weight:600}
-.titik{width:10px;height:10px;border-radius:50%;background:var(--ok);flex:none}
-.titik.tutup{background:var(--tinta-redup)}
-.lead{margin-top:14px;max-width:46ch;color:var(--tinta-redup)}
-.aksi{display:grid;gap:10px;margin-top:20px}
-@media (min-width:520px){.aksi{grid-template-columns:auto auto;justify-content:start}}
-.demo-strip{display:flex;justify-content:center;align-items:center;gap:8px;min-height:32px;padding:4px 16px;background:var(--sinyal);color:var(--di-atas-sinyal);font-size:13px;font-weight:600;text-align:center}
-.demo-strip .tanda-contoh{background:var(--di-atas-sinyal);color:var(--sinyal-gelap)}
-.demo-kartu{margin-bottom:22px;padding:16px;border:2px dashed var(--sinyal);border-radius:var(--r);background:var(--sinyal-lembut)}
-.demo-judul{margin-top:10px;font-size:21px;font-weight:800;line-height:1.2;text-wrap:balance}
-.demo-teks{margin-top:8px;font-size:15px}
-.ganti-kepala,.ganti-daftar li{display:grid;grid-template-columns:minmax(0,1fr) 20px minmax(0,1fr);gap:8px;align-items:center}
-.ganti-kepala{margin-top:14px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--tinta-redup)}
-.ganti-daftar{margin-top:4px}
-.ganti-daftar li{padding:10px 0;border-top:1px solid var(--garis);font-size:14px;line-height:1.35}
-.ganti-daftar .kini{color:var(--tinta-redup)}
-.ganti-daftar .nanti{font-weight:700}
-.ganti-daftar .ikon{width:18px;height:18px;color:var(--sinyal-gelap)}
-.demo-paket{margin-top:12px;padding-top:12px;border-top:1px solid var(--garis);font-size:14px}
-.tag-baris{margin-bottom:10px}
-.tag-anda{display:inline-flex;align-items:center;min-height:28px;padding:2px 10px;border:1.5px dashed var(--sinyal);border-radius:999px;background:var(--sinyal-lembut);color:var(--sinyal-gelap);font-size:13px;font-weight:700}
-.hero .tag-baris{margin:0 0 4px}
-.penutup .kartu{padding:20px}
-.penutup h2{font-size:clamp(22px,6vw,28px)}
-.tanda-contoh{flex:none;padding:2px 9px;border-radius:999px;background:var(--sinyal);color:var(--di-atas-sinyal);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
-.loncat{display:flex;gap:8px;overflow-x:auto;margin:20px -16px 0;padding:2px 16px 6px;scrollbar-width:none}
-.loncat::-webkit-scrollbar{display:none}
-.loncat a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1px solid var(--garis-kuat);border-radius:999px;font-weight:600;font-size:15px;text-decoration:none}
-.loncat a:hover{background:var(--kartu-turun)}
+.tinjau{margin-top:4px}
+.tinjau > div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0 12px;align-items:center;padding:10px 0;border-top:1px solid var(--garis)}
+.tinjau > div:first-child{border-top:0}
+.tinjau dt{grid-column:1;grid-row:1;font-size:13px;color:var(--tinta-redup)}
+.tinjau dd{grid-column:1;grid-row:2;font-weight:700;overflow-wrap:anywhere;white-space:pre-line}
+.tinjau .ubah{grid-column:2;grid-row:1 / 3;min-height:44px;padding:0 10px;border:0;border-radius:var(--r-tombol);background:transparent;color:var(--sinyal);font:inherit;font-weight:700;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.tinjau .ubah:hover{background:var(--sinyal-lembut)}
+.tinjau .total,.tinjau .rw{padding:12px 0}
+.tinjau .total dt,.tinjau .rw dt,.tinjau .total dd,.tinjau .rw dd{grid-row:1}
+.tinjau .total dd,.tinjau .rw dd{grid-column:2;text-align:right}
+.tinjau .total{border-top:2px solid var(--tinta)}
+.tinjau .total dt{font-size:15px;font-weight:700;color:var(--tinta)}
+.tinjau .total dd{font-size:20px}
+.tinjau .rw dd{font-weight:600}
 
-.bagian{padding:36px 0 4px}
-.bagian h2{font-size:clamp(26px,7vw,34px);font-weight:var(--h-berat);font-stretch:var(--h-lebar);text-transform:var(--h-huruf);letter-spacing:var(--h-ls);line-height:1.08;text-wrap:balance}
-.bagian-lead{margin-top:8px;max-width:56ch;color:var(--tinta-redup)}
-.kartu{margin-top:16px;padding:16px;border:1px solid var(--garis);border-radius:var(--r);background:var(--kartu);box-shadow:var(--bayang)}
-.kartu > h3{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta-redup)}
-.harga{margin-top:6px}
-.harga li{display:grid;grid-template-columns:1fr auto;gap:2px 16px;padding:14px 0;border-top:1px solid var(--garis)}
-.harga li:first-child{border-top:0}
-.harga .nm{font-weight:600}
-.harga .hr{font-weight:700;white-space:nowrap}
-.harga .ket{grid-column:1 / -1;font-size:14px;color:var(--tinta-redup)}
-.catatan{margin-top:14px;font-size:14px;color:var(--tinta-redup);max-width:60ch}
-.jam li{display:flex;justify-content:space-between;gap:12px;padding:12px 10px;margin:0 -10px;border-radius:var(--r-kecil)}
-.jam li + li{border-top:1px solid var(--garis);border-top-left-radius:0;border-top-right-radius:0}
-.jam li.hari-ini{background:var(--sinyal-lembut);border-top-color:transparent;font-weight:700}
-.jam li.hari-ini + li{border-top-color:transparent}
-.jam .tanda-hari{margin-left:8px;padding:1px 8px;border-radius:999px;background:var(--sinyal);color:var(--di-atas-sinyal);font-size:12px;font-weight:700}
-.alamat{margin-top:16px;font-style:normal;line-height:1.7}
-.aksi-lokasi{display:grid;gap:10px;margin-top:16px}
-@media (min-width:520px){.aksi-lokasi{grid-template-columns:auto auto;justify-content:start}}
-.galeri{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}
-@media (min-width:600px){.galeri{grid-template-columns:repeat(3,minmax(0,1fr))}}
-.petak{margin:0;aspect-ratio:4/3;overflow:hidden;border-radius:var(--r-kecil);background:var(--kartu-turun)}
-.petak img{display:block;width:100%;height:100%;object-fit:cover}
-.kredit{margin-top:12px;font-size:13px;color:var(--tinta-redup)}
-.kredit a{color:inherit;text-decoration:underline;display:inline-block;padding:12px 0}
-.tanya{margin-top:12px;border-bottom:1px solid var(--garis)}
-.tanya details{border-top:1px solid var(--garis)}
-.tanya summary{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:56px;padding:12px 0;font-weight:600;cursor:pointer;list-style:none}
-.tanya summary::-webkit-details-marker{display:none}
-.tanya summary svg{transition:transform .2s}
-.tanya details[open] summary svg{transform:rotate(180deg)}
-.tanya details p{padding:0 0 16px;color:var(--tinta-redup);max-width:60ch}
-.ganti-paket{margin-top:28px;padding:16px;border:1px solid var(--garis);border-radius:var(--r);background:var(--kartu)}
-.ganti-paket p{margin-bottom:12px}
-.kaki{margin-top:36px;padding:28px 0 32px;border-top:1px solid var(--garis);font-size:14px;color:var(--tinta-redup)}
-.kaki p + p{margin-top:10px}
-.kaki a{display:inline-flex;align-items:center;min-height:44px;color:var(--tinta);font-weight:600}
-.bar-bawah{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;gap:10px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:var(--latar);border-top:1px solid var(--garis);transition:transform .25s}
-.bar-bawah.sembunyi{transform:translateY(110%);visibility:hidden}
-.bar-bawah .tombol{flex:1 1 auto;min-height:52px;padding:0 14px;white-space:nowrap}
-.bar-bawah .tombol.garis{flex:0 0 auto}
-@media (min-width:760px){.bar-bawah{display:none}body{padding-bottom:0}}
-@media (prefers-reduced-motion:reduce){*{transition-duration:.001ms !important;animation-duration:.001ms !important}}
+.qris{width:min(220px,60vw);aspect-ratio:1;margin:16px 0 8px;border:10px solid var(--kartu);outline:2px solid var(--tinta);background:repeating-conic-gradient(var(--tinta) 0 25%,var(--kartu) 0 50%) 0 0/22px 22px;position:relative}
+.qris::after{content:"CONTOH";position:absolute;inset:0;display:grid;place-items:center;background:var(--kartu-turun);color:var(--salah);font-weight:800;letter-spacing:.14em}
+.panel-bayar{margin-top:14px;padding:14px;border-radius:var(--r-kecil);background:var(--kartu-turun);font-size:14px}
+.panel-bayar p + p{margin-top:8px}
+
+.aksi-langkah{position:sticky;bottom:0;z-index:5;margin:20px -16px -16px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--garis);border-radius:0 0 var(--r) var(--r);background:var(--kartu)}
+.ringkas-mini{margin-bottom:8px;overflow:hidden;font-size:14px;color:var(--tinta-redup);text-overflow:ellipsis;white-space:nowrap}
+.ringkas-mini b{color:var(--tinta)}
+.pesan-sistem{margin-bottom:8px;font-size:14px;font-weight:600;color:var(--salah)}
+.pesan-sistem:empty{display:none}
+.baris-aksi{display:grid;grid-template-columns:auto 1fr;gap:10px}
+.baris-aksi .tombol{padding:0 16px}
+#lanjut{white-space:nowrap}
+.baris-aksi.tanpa-kembali{grid-template-columns:1fr}
+
+.selesai h3{margin:14px 0 4px;font-size:26px;font-weight:var(--h-berat);font-stretch:var(--h-lebar);text-transform:var(--h-huruf);letter-spacing:var(--h-ls)}
+.selesai h3:focus{outline:0}
+.centang{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--sinyal);color:var(--di-atas-sinyal)}
+.centang .ikon{width:28px;height:28px;stroke-width:3}
+.kode{margin:6px 0 14px;font-size:30px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:.06em}
+.selesai .aksi{margin-top:18px}
+
+.st-baris{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:12px}
+.st-label{font-weight:600}
+.stepper{display:grid;grid-template-columns:52px minmax(44px,64px) 52px;align-items:center;flex:none;border:2px solid var(--garis-kuat);border-radius:var(--r-kecil);overflow:hidden}
+.st-btn{min-height:52px;border:0;background:var(--kartu);color:var(--tinta);font:inherit;font-size:22px;font-weight:700;cursor:pointer}
+.st-btn:hover:not(:disabled){background:var(--kartu-turun)}
+.st-btn:disabled{color:var(--tinta-redup);cursor:not-allowed}
+.st-nilai{display:block;min-height:52px;border-left:2px solid var(--garis-kuat);border-right:2px solid var(--garis-kuat);background:var(--kartu);color:var(--tinta);font:inherit;font-weight:700;text-align:center;line-height:52px}
+.menu-baris{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:64px;padding:12px 14px;border:2px solid var(--garis);border-radius:var(--r-kecil);background:var(--kartu)}
+.menu-baris.aktif{border-color:var(--sinyal);background:var(--sinyal-lembut)}
+.menu-info{display:grid;gap:2px;min-width:0}
+.menu-info .opsi-nama,.menu-info .opsi-harga,.menu-info .opsi-ket{grid-column:auto;grid-row:auto}
+.menu-sub{font-size:14px;font-weight:700;color:var(--sinyal-gelap)}
+.kolom textarea{min-height:88px;padding:12px 14px;border:2px solid var(--garis-kuat);border-radius:var(--r-kecil);background:var(--kartu);color:var(--tinta);font:inherit;font-size:16px;resize:vertical}
 
 .hero-isi{position:relative;isolation:isolate}
 .hero-isi::before{content:"";position:absolute;z-index:-1;right:-6px;top:-8px;width:150px;height:150px;pointer-events:none}
@@ -155,97 +163,56 @@ svg{display:block;flex:none}
 .fakta .f-nilai{font-size:15px;font-weight:800;line-height:1.25;overflow-wrap:anywhere}
 .dur{display:inline-block;margin-right:6px;padding:0 8px;border-radius:99px;background:var(--sinyal-lembut);color:var(--sinyal-gelap);font-size:13px;font-weight:700}
 
-.hero-isi{position:relative;isolation:isolate}
-.fakta{display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:8px;margin-top:20px}
-.fakta li{display:grid;gap:2px;align-content:start;padding:10px 12px;border:1px solid var(--garis);border-radius:var(--r-kecil);background:var(--kartu);min-width:0}
-.fakta .f-label{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--tinta-redup)}
-.fakta .f-nilai{font-size:15px;font-weight:800;line-height:1.25;overflow-wrap:anywhere}
-.dur{display:inline-block;margin-right:6px;padding:0 8px;border-radius:99px;background:var(--sinyal-lembut);color:var(--sinyal-gelap);font-size:13px;font-weight:700}
+
+[data-s=sore] .hero h1{font-family:var(--serif);font-size:clamp(42px,13vw,72px);line-height:.98;letter-spacing:-.01em}
+[data-s=sore] .hero h1 em{font-style:italic;color:var(--sinyal)}
+[data-s=sore] .eyebrow{color:var(--sinyal-gelap);font-size:12px;letter-spacing:.16em}
+[data-s=sore] .hero-foto{margin:22px 0 10px;isolation:isolate;position:relative}
+[data-s=sore] .hero-foto img{display:block;width:100%;height:auto;aspect-ratio:5/4;object-fit:cover;object-position:50% 58%;border-radius:var(--lengkung)}
+[data-s=sore] .lencana{position:absolute;left:14px;bottom:-14px;display:grid;place-content:center;width:88px;aspect-ratio:1;border-radius:50%;background:var(--sinyal);color:var(--di-atas-sinyal);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:8px;line-height:1.25}
+[data-s=sore] .fakta{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:30px}
+[data-s=sore] .fakta li{border-radius:var(--r-kecil);background:var(--kartu);border-color:var(--garis);padding:14px 12px}
+[data-s=sore] .fakta .f-nilai{font-family:var(--serif);font-size:20px;font-weight:600}
+[data-s=sore] .loncat a{border-radius:999px;background:var(--kartu)}
+[data-s=sore] .demo-kartu{border-radius:var(--r)}
+[data-s=sore] .bagian h2{font-family:var(--serif);font-size:clamp(30px,9vw,44px);line-height:1.02}
+[data-s=sore] .kartu{border-radius:var(--r)}
+[data-s=sore] .harga .hr{font-family:var(--serif);font-size:19px;font-weight:600}
+[data-s=sore] .petak{border-radius:var(--r-kecil)}
+[data-s=sore] .petak img{aspect-ratio:1/1;object-fit:cover}
+[data-s=sore] .petak:first-child{grid-column:1 / -1}
+[data-s=sore] .petak:first-child img{aspect-ratio:16/10}
+[data-s=sore] .tanya summary{font-family:var(--serif);font-size:19px;font-weight:600}
+[data-s=sore] .penutup .kartu{background:var(--kartu-turun);border:0;padding:26px 20px}
+[data-s=sore] .penutup h2{font-family:var(--serif)}
+
+[data-s=sore] .kartu.pesan,[data-s=sore] .kartu.pesan-buka{border-radius:18px;border-color:var(--garis);box-shadow:0 16px 38px rgba(120,72,40,.09)}
+[data-s=sore] .panel h3,[data-s=sore] .kartu.pesan-buka > h3{font-family:var(--serif);font-weight:400;font-size:25px}
+[data-s=sore] .progres{height:8px;border-radius:999px;background:var(--kartu-turun)}
+[data-s=sore] .progres i{border-radius:999px;background:var(--sinyal)}
+[data-s=sore] .opsi-kotak{border-radius:14px;background:var(--kartu)}
+[data-s=sore] .opsi input:checked + .opsi-kotak{border-color:var(--sinyal);background:var(--sinyal-lembut)}
+[data-s=sore] .opsi-nama{font-weight:600}
+[data-s=sore] .opsi-harga{font-family:var(--serif);font-size:18px}
+[data-s=sore] .hari{border-radius:14px;background:var(--kartu)}
+[data-s=sore] .hari .tg{font-family:var(--serif);font-size:22px;font-weight:400}
+[data-s=sore] .jam-grid button{border-radius:999px}
+[data-s=sore] .stepper{border-radius:999px;background:var(--kartu)}
+[data-s=sore] .kolom input,[data-s=sore] .kolom textarea{border-radius:12px;background:var(--kartu)}
+[data-s=sore] .tinjau .total{border-top:1px solid var(--garis)}
+[data-s=sore] .tinjau .total dd{font-family:var(--serif);font-size:24px;font-weight:500}
+[data-s=sore] .selesai h3{font-family:var(--serif);font-weight:400;font-size:28px}
+[data-s=sore] .kode{font-family:var(--serif);font-size:30px}
+
 .demo-strip{flex-wrap:wrap;column-gap:12px;row-gap:0}
 .demo-strip a{display:inline-flex;align-items:center;margin:-12px 0;padding:12px 4px;min-height:44px;color:inherit;font-weight:700;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
-/* jadwal kelas */
-.tabel{width:100%;border-collapse:collapse;font-size:15px;margin-top:4px}
-.tabel th,.tabel td{padding:11px 8px;border-top:1px solid var(--garis);text-align:left;vertical-align:top}
-.tabel thead th{border-top:0;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--tinta-redup)}
-.tabel td:last-child,.tabel th:last-child{text-align:right;white-space:nowrap}
-.tabel .kel{font-weight:700}
-.tabel .ket{display:block;font-size:13px;color:var(--tinta-redup)}
-/* wizard pesan */
-.pesan-buka{display:grid;gap:10px;justify-items:start}
-.pesan{display:grid;gap:14px;margin-top:16px}
-.langkah-nav{display:flex;flex-wrap:wrap;gap:6px}
-.langkah-nav li{display:flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid var(--garis);border-radius:999px;background:var(--kartu);font-size:13px;font-weight:600;color:var(--tinta-redup)}
-.langkah-nav li.aktif{border-color:var(--sinyal);background:var(--sinyal-lembut);color:var(--sinyal-gelap)}
-.langkah-nav li.selesai{border-color:var(--sinyal);color:var(--sinyal-gelap)}
-.langkah-nav .no{display:grid;place-content:center;width:20px;height:20px;border-radius:50%;background:var(--sinyal);color:var(--di-atas-sinyal);font-size:12px;font-weight:700}
-.langkah{border:1px solid var(--garis);border-radius:var(--r);background:var(--kartu);padding:16px;box-shadow:var(--bayang)}
-.langkah > h3{font-size:19px;font-weight:800;line-height:1.2}
-.langkah > p{margin-top:6px;font-size:15px;color:var(--tinta-redup);max-width:56ch}
-.pilih{display:grid;gap:8px;margin-top:14px}
-.pilih label{display:grid;grid-template-columns:24px minmax(0,1fr) auto;gap:10px;align-items:center;min-height:52px;padding:10px 12px;border:1.5px solid var(--garis);border-radius:var(--r-kecil);background:var(--latar);cursor:pointer}
-.pilih label:has(input:checked){border-color:var(--sinyal);background:var(--sinyal-lembut)}
-.pilih input{width:20px;height:20px;margin:0;accent-color:var(--sinyal)}
-.pilih .nm{font-weight:700;line-height:1.25}
-.pilih .sub{display:block;font-size:13px;font-weight:400;color:var(--tinta-redup)}
-.pilih .hr{font-weight:800;white-space:nowrap}
-.chip-baris{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.chip{min-height:44px;padding:0 14px;border:1.5px solid var(--garis-kuat);border-radius:999px;background:var(--kartu);color:var(--tinta);font:inherit;font-size:15px;font-weight:600;cursor:pointer}
-.chip[aria-pressed="true"]{border-color:var(--sinyal);background:var(--sinyal);color:var(--di-atas-sinyal)}
-.chip:disabled{opacity:.45;cursor:not-allowed;text-decoration:line-through}
-.hari-baris{display:flex;gap:8px;overflow-x:auto;margin:14px -16px 0;padding:2px 16px 6px;scrollbar-width:none}
-.hari-baris::-webkit-scrollbar{display:none}
-.slot{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:12px}
-.slot button{min-height:44px;border:1.5px solid var(--garis-kuat);border-radius:var(--r-kecil);background:var(--kartu);color:var(--tinta);font:inherit;font-size:14px;font-weight:600;cursor:pointer}
-.slot button[aria-pressed="true"]{border-color:var(--sinyal);background:var(--sinyal);color:var(--di-atas-sinyal)}
-.slot button:disabled{opacity:.4;cursor:not-allowed;text-decoration:line-through}
-.isian{display:grid;gap:10px;margin-top:14px}
-.isian label{display:grid;gap:4px;font-size:14px;font-weight:600}
-.isian input{min-height:48px;padding:0 12px;border:1.5px solid var(--garis-kuat);border-radius:var(--r-kecil);background:var(--latar);color:var(--tinta);font:inherit}
-.isian .galat{font-size:13px;font-weight:600;color:var(--salah)}
-.ringkas{margin-top:14px;border-top:1px solid var(--garis)}
-.ringkas dl,.ringkas div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;padding:9px 0;border-bottom:1px solid var(--garis-halus);font-size:15px;margin:0}
-.ringkas dt,.ringkas .k{color:var(--tinta-redup)}
-.ringkas dd,.ringkas .v{margin:0;font-weight:700;text-align:right}
-.ringkas .total{border-bottom:0;padding-top:12px;font-size:17px}
-.ringkas .total .v{font-size:20px}
-.pesan-kaki{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
-.pesan-kaki .tombol{flex:1 1 auto}
-.pesan-kaki .tombol.garis{flex:0 0 auto}
-.selesai{border:0;background:var(--sinyal-lembut);box-shadow:none}
-.selesai .kode{display:inline-block;margin-top:10px;padding:6px 12px;border-radius:var(--r-kecil);background:var(--kartu);font-family:var(--mono,monospace);font-weight:700;letter-spacing:.06em}
-.bayar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
-.bayar label{display:grid;gap:6px;justify-items:start;padding:14px;border:1.5px solid var(--garis);border-radius:var(--r-kecil);background:var(--latar);cursor:pointer;font-weight:600;min-height:64px}
-.bayar label:has(input:checked){border-color:var(--sinyal);background:var(--sinyal-lembut)}
-.bayar input{width:20px;height:20px;margin:0;accent-color:var(--sinyal)}
-.qr{display:grid;place-items:center;gap:8px;margin-top:14px;padding:16px;border:1px dashed var(--sinyal);border-radius:var(--r);background:var(--kartu)}
-.qr .kotak{width:148px;height:148px;border-radius:8px;background:
-  repeating-conic-gradient(var(--tinta) 0 25%,transparent 0 50%) 0 0/16px 16px,var(--kartu);border:6px solid var(--kartu);outline:1px solid var(--tinta)}
-.qr small{font-size:13px;color:var(--tinta-redup);text-align:center}
 
-
-/* gym, gaya hangat: serif lembut, kartu membulat, nada sore hari */
-[data-j=gym][data-s=sore] .hero h1{font-family:var(--serif);font-size:clamp(42px,13vw,72px);line-height:.98;letter-spacing:-.01em}
-[data-j=gym][data-s=sore] .hero h1 em{font-style:italic;color:var(--sinyal)}
-[data-j=gym][data-s=sore] .eyebrow{color:var(--sinyal-gelap);font-size:12px;letter-spacing:.16em}
-[data-j=gym][data-s=sore] .hero-foto{margin:22px 0 10px;isolation:isolate;position:relative}
-[data-j=gym][data-s=sore] .hero-foto img{display:block;width:100%;height:auto;aspect-ratio:5/4;object-fit:cover;object-position:50% 58%;border-radius:var(--lengkung)}
-[data-j=gym][data-s=sore] .lencana{position:absolute;left:14px;bottom:-14px;display:grid;place-content:center;width:88px;aspect-ratio:1;border-radius:50%;background:var(--sinyal);color:var(--di-atas-sinyal);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:8px;line-height:1.25}
-[data-j=gym][data-s=sore] .fakta{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:30px}
-[data-j=gym][data-s=sore] .fakta li{border-radius:var(--r-kecil);background:var(--kartu);border-color:var(--garis);padding:14px 12px}
-[data-j=gym][data-s=sore] .fakta .f-nilai{font-family:var(--serif);font-size:20px;font-weight:600}
-[data-j=gym][data-s=sore] .loncat a{border-radius:999px;background:var(--kartu)}
-[data-j=gym][data-s=sore] .demo-kartu{border-radius:var(--r)}
-[data-j=gym][data-s=sore] .bagian h2{font-family:var(--serif);font-size:clamp(30px,9vw,44px);line-height:1.02}
-[data-j=gym][data-s=sore] .kartu{border-radius:var(--r)}
-[data-j=gym][data-s=sore] .harga .hr{font-family:var(--serif);font-size:19px;font-weight:600}
-[data-j=gym][data-s=sore] .petak{border-radius:var(--r-kecil)}
-[data-j=gym][data-s=sore] .petak img{aspect-ratio:1/1;object-fit:cover}
-[data-j=gym][data-s=sore] .petak:first-child{grid-column:1 / -1}
-[data-j=gym][data-s=sore] .petak:first-child img{aspect-ratio:16/10}
-[data-j=gym][data-s=sore] .tanya summary{font-family:var(--serif);font-size:19px;font-weight:600}
-[data-j=gym][data-s=sore] .penutup .kartu{background:var(--kartu-turun);border:0;padding:26px 20px}
-[data-j=gym][data-s=sore] .penutup h2{font-family:var(--serif)}
-[data-j=gym][data-s=sore] .tabel .kel{font-family:var(--serif);font-size:17px;font-weight:600}
+.hero h1{overflow-wrap:break-word;word-break:break-word}
+.ganti-daftar li,.demo-judul,.demo-teks,.demo-paket,.tanya details p{overflow-wrap:anywhere;min-width:0}
+.ganti-daftar .kini,.ganti-daftar .nanti{min-width:0;overflow-wrap:anywhere}
+.fakta li,.harga li,.harga .nm,.harga .ket,.status{min-width:0}
+.status{max-width:100%}
+.status span{overflow-wrap:anywhere}
 
 </style>
 </head>
@@ -259,220 +226,440 @@ svg{display:block;flex:none}
 <p class="eyebrow">Gym &middot; Cileunyi, Kabupaten Bandung</p>
 <h1>Gym <em>Cakra</em></h1>
 <p class="tag-baris"><span class="tag-anda">Nama gym Anda tampil di sini</span></p>
-<figure class="hero-foto"><img src="/gym/img/g6.jpg" alt="Bangku dan alat beban di ruang latihan gym" width="720" height="540" fetchpriority="high" decoding="async"><span class="lencana">Cileunyi</span></figure>
+<figure class="hero-foto"><img src="/gym/img/g4.jpg" alt="Kelas muay thai" width="720" height="540" fetchpriority="high" decoding="async"><span class="lencana">Cileunyi</span></figure>
 <p class="tag-baris"><span class="tag-anda">Foto gym Anda tampil di sini</span></p>
 <p class="status" id="status"><span class="titik" id="titik"></span><span id="status-teks">Memuat jam buka</span></p>
 <p class="lead">Alat beban lengkap, kelas grup, dan personal trainer, dengan harga yang tertera jelas.</p>
-<div class="aksi"><a class="tombol" href="#pesan">Pesan sekarang</a><a class="tombol garis" href="/gym/paket-3/sore/">Buka demo Paket 3, dengan pembayaran <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a></div>
+<div class="aksi"><a class="tombol" href="#pesan"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Pesan sekarang</a><a class="tombol garis" href="https://wa.me/6281234567893?text=Halo%2C%20saya%20mau%20tanya%20soal%20jadwal%20latihan%20di%20Gym%20Cakra."><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.6-5.4A8.4 8.4 0 1 1 21 11.5Z"/></svg> Tanya lewat WhatsApp</a></div>
 </div>
-<ul class="fakta"><li><span class="f-label">Mulai dari</span><span class="f-nilai">Rp 50.000</span></li><li><span class="f-label">Trainer</span><span class="f-nilai">3 orang</span></li><li><span class="f-label">Buka</span><span class="f-nilai">06.00-21.00</span></li></ul>
-<nav class="loncat" aria-label="Loncat ke bagian"><a href="#harga">Harga</a><a href="#jadwal">Jadwal</a><a href="#lokasi">Lokasi</a><a href="#galeri">Galeri</a><a href="#tanya-jawab">Tanya jawab</a></nav>
-<section class="demo-kartu" aria-label="Penjelasan halaman demo"><span class="tanda-contoh">Demo Paket 2</span><p class="demo-judul">Ini halaman demo, bukan gym sungguhan</p><p class="demo-teks">Beginilah tampilan website Anda nanti kalau memakai jasa Devario. Bayangkan isinya jadi milik gym Anda.</p><div class="ganti-kepala" aria-hidden="true"><span>Di demo ini</span><span></span><span>Di website Anda</span></div><ul class="ganti-daftar"><li><span class="kini">Gym Cakra</span><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg><span class="nanti"><span class="sr">jadi </span>Nama gym Anda</span></li><li><span class="kini">Jl. Contoh No. 10</span><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg><span class="nanti"><span class="sr">jadi </span>Alamat gym Anda</span></li><li><span class="kini">Trainer: Cakra, Bagas, Nadia</span><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg><span class="nanti"><span class="sr">jadi </span>Nama trainer Anda</span></li><li><span class="kini">Kunjungan harian, Rp 50.000</span><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg><span class="nanti"><span class="sr">jadi </span>Layanan dan harga Anda</span></li><li><span class="kini">0812-3456-7890</span><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg><span class="nanti"><span class="sr">jadi </span>Nomor WhatsApp Anda</span></li><li><span class="kini">devario.rioeka.com</span><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg><span class="nanti"><span class="sr">jadi </span>namagymanda.com</span></li><li><span class="kini">Foto contoh</span><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg><span class="nanti"><span class="sr">jadi </span>Foto asli gym Anda</span></li></ul><p class="demo-paket">Paket 2: pesanan di halaman ini tidak tersimpan, hanya memperlihatkan alurnya. Di website Anda, pesanan masuk ke WhatsApp atau ke catatan gym.</p></section>
+<ul class="fakta"><li><span class="f-label">Mulai dari</span><span class="f-nilai">Rp 35.000</span></li><li><span class="f-label">Trainer</span><span class="f-nilai">3 orang</span></li><li><span class="f-label">Lama layanan</span><span class="f-nilai">15-720 menit</span></li></ul>
+<nav class="loncat" aria-label="Loncat ke bagian"><a href="#pesan">Pesan</a><a href="#harga">Harga</a><a href="#lokasi">Lokasi</a><a href="#tanya">Tanya jawab</a></nav>
+<section class="demo-kartu" aria-label="Penjelasan halaman demo"><span class="tanda-contoh">Demo Paket 2</span><p class="demo-judul">Ini halaman demo, bukan gym sungguhan</p><p class="demo-teks">Beginilah tampilan website Anda nanti kalau memakai jasa Devario. Bayangkan isinya jadi milik gym Anda.</p><div class="ganti-kepala" aria-hidden="true"><span>Di demo ini</span><span></span><span>Di website Anda</span></div><ul class="ganti-daftar"><li><span class="kini">Gym Cakra</span><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg><span class="nanti"><span class="sr">jadi </span>Nama gym Anda</span></li><li><span class="kini">Jl. Contoh No. 10</span><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg><span class="nanti"><span class="sr">jadi </span>Alamat gym Anda</span></li><li><span class="kini">Trainer: Cakra, Bagas, Nadia</span><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg><span class="nanti"><span class="sr">jadi </span>Nama trainer di tempat Anda</span></li><li><span class="kini">Kunjungan harian, Rp 50.000</span><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg><span class="nanti"><span class="sr">jadi </span>Layanan dan harga Anda</span></li><li><span class="kini">0812-3456-7893</span><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg><span class="nanti"><span class="sr">jadi </span>Nomor WhatsApp Anda</span></li><li><span class="kini">devario.rioeka.com</span><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg><span class="nanti"><span class="sr">jadi </span>namagymanda.com</span></li></ul><p class="demo-paket">Paket 2: pesanan di halaman ini tidak tersimpan, hanya memperlihatkan alurnya. Di website Anda, pesanan masuk ke WhatsApp atau ke catatan gym.</p></section>
 </section>
-<section class="bagian" id="pesan">
-<p class="tag-baris"><span class="tag-anda">Alur pemesanan di website Anda</span></p>
-<h2>Coba pesan sendiri</h2>
-<p class="bagian-lead">Tanpa aplikasi dan tanpa formulir panjang, selesai di halaman ini juga. Coba sendiri alurnya: pilih layanan, trainer, tanggal dan jam, lalu isi nama dan nomor.</p>
-<div class="kartu pesan-buka"><h3>Coba alurnya sendiri</h3><p class="catatan">Pilih layanan dan jadwal dalam 5 langkah singkat. Pesanan di halaman contoh ini tidak tersimpan.</p><button class="tombol" id="buka-pesan" type="button">Mulai coba pesan</button></div>
-<div class="pesan" id="pesan-panel" hidden>
-<ol class="langkah-nav" id="nav"><li data-nav="1"><span class="no">1</span>Layanan</li><li data-nav="2"><span class="no">2</span>Trainer &amp; jadwal</li><li data-nav="3"><span class="no">3</span>Data</li><li data-nav="4"><span class="no">4</span>Ringkasan</li><li data-nav="5"><span class="no">5</span>Selesai</li></ol>
-<form id="form-pesan" novalidate>
-<div class="langkah" data-l="1"><h3>Pilih layanan</h3><p>Boleh pilih lebih dari satu, totalnya dihitung otomatis.</p><div class="pilih"><label><input type="checkbox" name="layanan" value="kunjungan"><span class="nm">Kunjungan harian<span class="sub">Bebas pakai alat sepanjang jam buka</span></span><span class="hr">Rp 50.000</span></label><label><input type="checkbox" name="layanan" value="kelas"><span class="nm">Kelas grup<span class="sub">Kuota 12 orang per kelas</span></span><span class="hr">Rp 35.000</span></label><label><input type="checkbox" name="layanan" value="pt"><span class="nm">Sesi personal trainer<span class="sub">60 menit, satu lawan satu</span></span><span class="hr">Rp 150.000</span></label><label><input type="checkbox" name="layanan" value="trial"><span class="nm">Coba gratis<span class="sub">Sekali per orang, termasuk pendampingan alat</span></span><span class="hr">Gratis</span></label></div><p class="galat" id="galat-1" hidden>Pilih minimal satu layanan dulu.</p></div>
-<div class="langkah" data-l="2" hidden><h3>Pilih trainer dan jadwal</h3><p>Kloter latihan dibatasi supaya alat tidak penuh. Jam bergaris coret sudah terisi.</p><div class="chip-baris" id="trainer-baris"><button class="chip" type="button" data-trainer="cakra" aria-pressed="false">Cakra</button><button class="chip" type="button" data-trainer="bagas" aria-pressed="false">Bagas</button><button class="chip" type="button" data-trainer="nadia" aria-pressed="false">Nadia</button><button class="chip" type="button" data-trainer="siapa" aria-pressed="false">Terserah, siapa saja</button></div><p class="catatan">Tanggal yang tersedia dua minggu ke depan. Hari ini tetap bisa dipesan kalau jamnya belum lewat.</p><div class="hari-baris" id="hari-baris"></div><div class="slot" id="slot-baris"></div><p class="galat" id="galat-2" hidden>Pilih tanggal dan jam dulu.</p></div>
-<div class="langkah" data-l="3" hidden><h3>Nama dan nomor</h3><p>Dipakai untuk konfirmasi. Di website Anda, data ini masuk ke catatan gym dan ke WhatsApp.</p><div class="isian"><label>Nama<input id="isian-nama" type="text" autocomplete="name" placeholder="Nama Anda" required></label><label>Nomor WhatsApp<input id="isian-wa" type="tel" inputmode="tel" autocomplete="tel" placeholder="08xx" required></label></div><p class="galat" id="galat-3" hidden>Nama dan nomor WhatsApp perlu diisi.</p></div>
-<div class="langkah" data-l="4" hidden><h3>Ringkasan</h3><p>Periksa lagi sebelum dikirim.</p><div class="ringkas" id="ringkas"></div></div>
-
-<div class="langkah selesai" data-l="5" hidden><h3>Pesanan contoh selesai</h3><p>Di halaman demo ini tidak ada data yang dikirim atau disimpan. Di website Anda, pesanan masuk ke WhatsApp gym dan tercatat di daftar pesanan.</p><span class="kode" id="kode">CX-0000</span><div class="ringkas" id="ringkas-selesai"></div></div>
-<div class="pesan-kaki"><button class="tombol garis" id="kembali" type="button" hidden>Kembali</button><button class="tombol" id="lanjut" type="button">Lanjut</button><button class="tombol garis" id="ulang" type="button" hidden>Ulangi</button></div>
-</form>
+<section class="bagian" id="bagian-pesan" aria-labelledby="j-pesan">
+<p class="tag-baris"><span class="tag-anda">Layanan dan jam sesuai usaha Anda</span></p>
+<h2 id="j-pesan">Coba pesan sendiri</h2>
+<p class="bagian-lead">Datang langsung atau memesan lebih dulu, keduanya bisa.</p>
+<div class="kartu pesan-buka" id="pesan-buka"><h3>Coba alurnya sendiri</h3><p>Pilih layanan, trainer, tanggal, dan jam dalam 5 langkah singkat. Pesanan di halaman contoh ini tidak tersimpan.</p><button class="tombol" id="buka-pesan" type="button" aria-controls="pesan" aria-expanded="false"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Mulai coba pesan</button></div>
+<div class="kartu pesan" id="pesan" hidden>
+<div id="alur">
+<div class="langkah-kepala"><span class="langkah-no" id="l-no">Langkah 1 dari 5</span><span class="langkah-nama" id="l-nama">Layanan</span></div>
+<div class="progres" id="progres" role="progressbar" aria-label="Kemajuan pesanan" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1"><i id="progres-isi"></i></div>
+<div class="panel" data-langkah="layanan"><h3 tabindex="-1">Pilih layanan</h3><p class="tip">Boleh pilih lebih dari satu, total harganya dihitung otomatis. Harga tetap, tidak ada tambahan.</p><div id="pilih-layanan"></div></div>
+<div class="panel" data-langkah="stylist" hidden><h3 tabindex="-1">Pilih trainer</h3><p class="tip">Tidak punya pilihan? Pilih "Terserah, siapa saja".</p><div id="pilih-stylist"></div></div>
+<div class="panel" data-langkah="waktu" hidden><h3 tabindex="-1">Pilih tanggal dan jam</h3><p class="tip">Dua minggu ke depan. Tanggal bergaris putus-putus berarti tutup.</p><div class="hari-strip" id="pilih-hari" role="group" aria-label="Tanggal"></div><p class="jam-label" id="jam-judul">Pilih tanggal dulu</p><div class="jam-grid" id="pilih-jam" role="group" aria-labelledby="jam-judul"></div><p class="petunjuk" style="margin-top:12px">Jam bergaris coret sudah terisi.</p></div>
+<div class="panel" data-langkah="data" hidden><h3 tabindex="-1">Nama dan nomor</h3><p class="tip">Kami memakai nomor ini hanya untuk mengabari pesanan yang dikonfirmasi.</p><div class="kolom"><label for="nama">Nama</label><input id="nama" name="nama" type="text" autocomplete="name" placeholder="Nama Anda"></div><div class="kolom"><label for="wa">Nomor WhatsApp</label><input id="wa" name="wa" type="tel" inputmode="tel" autocomplete="tel" placeholder="0812 3456 7890"></div></div>
+<div class="panel" data-langkah="tinjau" hidden><h3 tabindex="-1">Periksa pesanan</h3><p class="tip">Ketuk "Ubah" untuk memperbaiki. Pesanan di halaman contoh ini tidak tersimpan.</p><dl class="tinjau" id="tinjau"></dl></div>
+<div class="aksi-langkah"><p class="ringkas-mini" id="mini" hidden></p><p class="pesan-sistem" id="pesan-sistem" role="status" aria-live="polite"></p><div class="baris-aksi tanpa-kembali" id="baris-aksi"><button class="tombol garis" id="kembali" type="button" hidden>Kembali</button><button class="tombol" id="lanjut" type="button" aria-disabled="true">Lanjut</button></div></div></div>
+<div id="selesai" class="selesai" hidden><div id="k-centang" class="centang" aria-hidden="true"></div><h3 tabindex="-1">Pesanan dicatat</h3><p class="langkah-nama">Kode pesanan</p><p class="kode" id="k-kode"></p><dl class="tinjau" id="k-ringkas"></dl><p class="catatan">Halaman contoh. Pesanan ini tidak tersimpan di mana pun.</p><div class="aksi"><a class="tombol" id="k-wa" href="#">Kirim ke WhatsApp</a><button class="tombol garis" id="ulang" type="button">Pesan lagi</button></div></div>
 </div>
 </section>
 <section class="bagian" id="harga">
-<p class="tag-baris"><span class="tag-anda">Harga di gym Anda</span></p>
+<p class="tag-baris"><span class="tag-anda">Harga gym Anda</span></p>
 <h2>Daftar harga</h2>
 <p class="bagian-lead">Semua harga sudah termasuk akses alat. Kelas grup dan personal trainer dihitung terpisah dari membership.</p>
-<div class="kartu"><h3>Kunjungan dan membership</h3><ul class="harga"><li><span class="nm">Kunjungan harian</span><span class="hr">Rp 50.000</span><span class="ket"><span class="dur">Bebas waktu</span><span class="ket-teks">Bayar di tempat, QRIS atau tunai.</span></span></li><li><span class="nm">Paket 10 kunjungan</span><span class="hr">Rp 450.000</span><span class="ket"><span class="dur">Berlaku 2 bulan</span><span class="ket-teks">Hemat Rp 50.000 dibanding bayar harian.</span></span></li><li><span class="nm">Membership bulanan</span><span class="hr">Rp 700.000</span><span class="ket"><span class="dur">30 hari</span><span class="ket-teks">Semua alat dan kelas grup, tanpa batas kunjungan.</span></span></li><li><span class="nm">Membership 3 bulan</span><span class="hr">Rp 1.800.000</span><span class="ket"><span class="dur">90 hari</span><span class="ket-teks">Hemat Rp 300.000.</span></span></li><li><span class="nm">Membership 6 bulan</span><span class="hr">Rp 3.300.000</span><span class="ket"><span class="dur">180 hari</span><span class="ket-teks">Hemat Rp 900.000, bisa dibayar dua kali.</span></span></li></ul></div><div class="kartu"><h3>Kelas grup</h3><ul class="harga"><li><span class="nm">Muay thai</span><span class="hr">Rp 50.000</span><span class="ket"><span class="dur">60 menit</span><span class="ket-teks">Selasa dan Kamis, 19.00.</span></span></li><li><span class="nm">Yoga</span><span class="hr">Rp 40.000</span><span class="ket"><span class="dur">60 menit</span><span class="ket-teks">Rabu, 18.30. Bawa matras sendiri.</span></span></li><li><span class="nm">Zumba</span><span class="hr">Rp 35.000</span><span class="ket"><span class="dur">45 menit</span><span class="ket-teks">Jumat, 18.30.</span></span></li><li><span class="nm">Body pump</span><span class="hr">Rp 40.000</span><span class="ket"><span class="dur">45 menit</span><span class="ket-teks">Sabtu, 08.00.</span></span></li><li><span class="nm">Kelas pemula</span><span class="hr">Rp 35.000</span><span class="ket"><span class="dur">45 menit</span><span class="ket-teks">Minggu, 08.00, dibimbing dari nol.</span></span></li></ul></div><div class="kartu"><h3>Personal trainer</h3><ul class="harga"><li><span class="nm">Satu sesi</span><span class="hr">Rp 150.000</span><span class="ket"><span class="dur">60 menit</span><span class="ket-teks">Termasuk program latihan hari itu.</span></span></li><li><span class="nm">Paket 5 sesi</span><span class="hr">Rp 700.000</span><span class="ket"><span class="dur">5 x 60 menit</span><span class="ket-teks">Hemat Rp 50.000.</span></span></li><li><span class="nm">Paket 10 sesi</span><span class="hr">Rp 1.300.000</span><span class="ket"><span class="dur">10 x 60 menit</span><span class="ket-teks">Hemat Rp 200.000.</span></span></li><li><span class="nm">Program 1 bulan</span><span class="hr">Rp 2.500.000</span><span class="ket"><span class="dur">12 sesi</span><span class="ket-teks">Termasuk program latihan dan arahan makan.</span></span></li><li><span class="nm">Ukur komposisi tubuh</span><span class="hr">Rp 50.000</span><span class="ket"><span class="dur">15 menit</span><span class="ket-teks">Berat, lemak, otot, dan air tubuh.</span></span></li></ul></div><p class="catatan">Membership tidak termasuk personal trainer dan ukur komposisi tubuh. Paket kelas bisa dibeli satuan tanpa membership.</p>
-</section>
-<section class="bagian" id="jadwal">
-<p class="tag-baris"><span class="tag-anda">Jadwal kelas gym Anda</span></p>
-<h2>Jadwal kelas</h2>
-<p class="bagian-lead">Jadwal tetap tiap minggu, kuota 12 orang per kelas. Yang mau ikut sebaiknya memesan lebih dulu lewat alur pesan di halaman ini.</p>
-<div class="kartu"><h3>Kelas grup mingguan</h3><table class="tabel"><thead><tr><th>Hari</th><th>Kelas</th><th>Durasi</th></tr></thead><tbody><tr><td>Senin</td><td><span class="kel">Muay thai</span><span class="ket">19.00 &middot; Cakra</span></td><td>60 menit</td></tr><tr><td>Rabu</td><td><span class="kel">Yoga</span><span class="ket">18.30 &middot; Nadia</span></td><td>60 menit</td></tr><tr><td>Kamis</td><td><span class="kel">Muay thai</span><span class="ket">19.00 &middot; Bagas</span></td><td>60 menit</td></tr><tr><td>Jumat</td><td><span class="kel">Zumba</span><span class="ket">18.30 &middot; Nadia</span></td><td>45 menit</td></tr><tr><td>Sabtu</td><td><span class="kel">Body pump</span><span class="ket">08.00 &middot; Cakra</span></td><td>45 menit</td></tr><tr><td>Minggu</td><td><span class="kel">Kelas pemula</span><span class="ket">08.00 &middot; Bagas</span></td><td>45 menit</td></tr></tbody></table></div>
-<p class="catatan">Selasa dan Jumat pagi ruang kelas kosong, bisa dipakai latihan bebas.</p>
+<div class="kartu"><h3>Kunjungan dan membership</h3><ul class="harga"><li><span class="nm">Kunjungan harian</span><span class="hr">Rp 50.000</span><span class="ket"><span class="dur">1 jam 30 menit</span><span class="ket-teks">Bebas waktu, bayar di tempat atau QRIS.</span></span></li><li><span class="nm">Paket 10 kunjungan</span><span class="hr">Rp 450.000</span><span class="ket"><span class="dur">1 jam 30 menit</span><span class="ket-teks">Berlaku 2 bulan, hemat Rp 50.000.</span></span></li><li><span class="nm">Membership bulanan</span><span class="hr">Rp 700.000</span><span class="ket"><span class="dur">1 jam 30 menit</span><span class="ket-teks">30 hari, semua alat dan kelas grup.</span></span></li><li><span class="nm">Membership 3 bulan</span><span class="hr">Rp 1.800.000</span><span class="ket"><span class="dur">1 jam 30 menit</span><span class="ket-teks">90 hari, hemat Rp 300.000.</span></span></li><li><span class="nm">Membership 6 bulan</span><span class="hr">Rp 3.300.000</span><span class="ket"><span class="dur">1 jam 30 menit</span><span class="ket-teks">180 hari, bisa dibayar dua kali.</span></span></li></ul></div><div class="kartu"><h3>Kelas grup</h3><ul class="harga"><li><span class="nm">Muay thai</span><span class="hr">Rp 50.000</span><span class="ket"><span class="dur">1 jam</span><span class="ket-teks">Selasa dan Kamis, 19.00.</span></span></li><li><span class="nm">Yoga</span><span class="hr">Rp 40.000</span><span class="ket"><span class="dur">1 jam</span><span class="ket-teks">Rabu, 18.30. Bawa matras sendiri.</span></span></li><li><span class="nm">Zumba</span><span class="hr">Rp 35.000</span><span class="ket"><span class="dur">45 menit</span><span class="ket-teks">Jumat, 18.30.</span></span></li><li><span class="nm">Body pump</span><span class="hr">Rp 40.000</span><span class="ket"><span class="dur">45 menit</span><span class="ket-teks">Sabtu, 08.00.</span></span></li><li><span class="nm">Kelas pemula</span><span class="hr">Rp 35.000</span><span class="ket"><span class="dur">45 menit</span><span class="ket-teks">Minggu, 08.00, dibimbing dari nol.</span></span></li></ul></div><div class="kartu"><h3>Personal trainer</h3><ul class="harga"><li><span class="nm">Sesi personal trainer</span><span class="hr">Rp 150.000</span><span class="ket"><span class="dur">1 jam</span><span class="ket-teks">Termasuk program latihan hari itu.</span></span></li><li><span class="nm">Paket 5 sesi</span><span class="hr">Rp 700.000</span><span class="ket"><span class="dur">5 jam</span><span class="ket-teks">5 x 60 menit, hemat Rp 50.000.</span></span></li><li><span class="nm">Paket 10 sesi</span><span class="hr">Rp 1.300.000</span><span class="ket"><span class="dur">10 jam</span><span class="ket-teks">10 x 60 menit, hemat Rp 200.000.</span></span></li><li><span class="nm">Program 1 bulan</span><span class="hr">Rp 2.500.000</span><span class="ket"><span class="dur">12 jam</span><span class="ket-teks">12 sesi, termasuk arahan makan.</span></span></li><li><span class="nm">Ukur komposisi tubuh</span><span class="hr">Rp 50.000</span><span class="ket"><span class="dur">15 menit</span><span class="ket-teks">Berat, lemak, otot, dan air tubuh.</span></span></li></ul></div><p class="catatan">Membership tidak termasuk personal trainer dan ukur komposisi tubuh. Paket kelas bisa dibeli satuan tanpa membership.</p>
 </section>
 <section class="bagian" id="lokasi">
 <p class="tag-baris"><span class="tag-anda">Alamat dan jam buka gym Anda</span></p>
 <h2>Lokasi dan jam buka</h2>
 <p class="bagian-lead">Buka tujuh hari. Jam Minggu lebih pendek, jadi kalau mau latihan pagi tetap aman.</p>
 <div class="kartu"><h3>Jam buka</h3><ul class="jam" id="kartu-jam"><li data-hari="1"><span>Senin</span><span>06.00 sampai 21.00</span></li><li data-hari="2"><span>Selasa</span><span>06.00 sampai 21.00</span></li><li data-hari="3"><span>Rabu</span><span>06.00 sampai 21.00</span></li><li data-hari="4"><span>Kamis</span><span>06.00 sampai 21.00</span></li><li data-hari="5"><span>Jumat</span><span>06.00 sampai 21.00</span></li><li data-hari="6"><span>Sabtu</span><span>07.00 sampai 20.00</span></li><li data-hari="0"><span>Minggu</span><span>07.00 sampai 17.00</span></li></ul></div>
-<div class="kartu"><h3>Alamat</h3><address class="alamat">Jl. Contoh No. 10<br>Cileunyi, Kabupaten Bandung 40623<br>Seberang bengkel, parkir di halaman.</address><div class="aksi-lokasi"><a class="tombol garis" href="https://www.google.com/maps/search/?api=1&amp;query=Jl.%20Contoh%20No.%2010%20Cileunyi%20Kabupaten%20Bandung"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Buka di Google Maps</a></div></div>
-</section>
-<section class="bagian" id="galeri">
-<p class="tag-baris"><span class="tag-anda">Foto asli gym Anda</span></p>
-<h2>Galeri</h2>
-<p class="bagian-lead">Enam foto ruang latihan. Di website sungguhan, foto ini diganti foto gym Anda sendiri.</p>
-<div class="galeri"><figure class="petak"><img src="/gym/img/g1.jpg" alt="" width="720" height="540" loading="lazy" decoding="async"><figcaption>Ruang beban dan barbel</figcaption></figure><figure class="petak"><img src="/gym/img/g2.jpg" alt="" width="720" height="540" loading="lazy" decoding="async"><figcaption>Mesin kabel dan alat duduk</figcaption></figure><figure class="petak"><img src="/gym/img/g4.jpg" alt="" width="720" height="540" loading="lazy" decoding="async"><figcaption>Area kelas dan matras</figcaption></figure><figure class="petak"><img src="/gym/img/g3.jpg" alt="" width="720" height="540" loading="lazy" decoding="async"><figcaption>Kelas muay thai</figcaption></figure><figure class="petak"><img src="/gym/img/g5.jpg" alt="" width="720" height="540" loading="lazy" decoding="async"><figcaption>Rak dumbbell dan kettlebell</figcaption></figure><figure class="petak"><img src="/gym/img/g6.jpg" alt="" width="720" height="540" loading="lazy" decoding="async"><figcaption>Ruang latihan utama</figcaption></figure></div>
-<p class="kredit">Foto contoh dari <a href="https://unsplash.com/license" rel="noopener">Unsplash</a>, bebas dipakai.</p>
+<div class="kartu"><h3>Alamat</h3><address class="alamat">Jl. Contoh No. 10<br>Cileunyi, Kabupaten Bandung 40623<br>Seberang bengkel, parkir di halaman.</address><div class="aksi-lokasi"><a class="tombol garis" href="https://www.google.com/maps/search/?api=1&amp;query=Jl.%20Contoh%20No.%2010%20Cileunyi%20Bandung"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Buka di Google Maps</a></div></div>
 </section>
 <section class="bagian" id="tanya">
 <h2>Pertanyaan yang sering masuk</h2>
-<div class="tanya"><details><summary>Bisa datang tanpa membership?<svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Bisa. Kunjungan harian Rp 50.000, bayar di tempat pakai QRIS atau tunai. Tidak perlu daftar dulu.</p></details><details><summary>Ada coba gratis untuk yang baru pertama kali?<svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Ada, satu kali per orang, termasuk pendampingan alat 15 menit supaya tidak bingung mulai dari mana. Isi alur pesan di halaman ini atau lewat WhatsApp.</p></details><details><summary>Ada loker dan kamar mandi?<svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Ada loker harian, bawa gembok sendiri. Dua kamar shower dengan air panas, dan ruang ganti terpisah.</p></details><details><summary>Belum pernah latihan sama sekali, apakah cocok?<svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Cocok. Ada kelas pemula hari Minggu pukul 08.00 dan trainer yang bisa menemani sesi pertama. Sebutkan saat datang, nanti diarahkan.</p></details><details><summary>Bisa bayar pakai QRIS atau transfer?<svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Bisa QRIS, transfer bank, dan tunai. Untuk membership, bukti transfer bisa dikirim lewat WhatsApp.</p></details><details><summary>Parkir motor dan mobil ada?<svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Ada halaman parkir untuk 12 motor dan 4 mobil, gratis untuk yang latihan.</p></details></div>
+<div class="tanya"><details><summary>Bisa datang tanpa membership?<svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Bisa. Kunjungan harian Rp 50.000, bayar di tempat pakai QRIS atau tunai. Tidak perlu daftar dulu.</p></details><details><summary>Ada coba gratis untuk yang baru pertama kali?<svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Ada, satu kali per orang, termasuk pendampingan alat 15 menit supaya tidak bingung mulai dari mana.</p></details><details><summary>Ada loker dan kamar mandi?<svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Ada loker harian, bawa gembok sendiri. Dua kamar shower dengan air panas, dan ruang ganti terpisah.</p></details><details><summary>Belum pernah latihan sama sekali, apakah cocok?<svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Cocok. Ada kelas pemula hari Minggu pukul 08.00 dan trainer yang bisa menemani sesi pertama.</p></details><details><summary>Bisa bayar pakai QRIS atau transfer?<svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Bisa QRIS, transfer bank, dan tunai. Untuk membership, bukti transfer bisa dikirim lewat WhatsApp.</p></details><details><summary>Parkir motor dan mobil ada?<svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Ada halaman parkir untuk 12 motor dan 4 mobil, gratis untuk yang latihan.</p></details></div>
 </section>
 <section class="bagian penutup" aria-label="Penutup">
 <div class="kartu"><h2>Bayangkan ini website gym Anda</h2>
-<p class="bagian-lead">Nama, alamat, daftar harga, jadwal kelas, dan foto di halaman ini nanti diganti dengan milik gym Anda. Gym Cakra hanya nama contoh. Alamat websitenya didaftarkan atas nama usaha Anda sendiri, misalnya namagymanda.com.</p>
+<p class="bagian-lead">Nama, alamat, daftar harga, jam buka, dan foto di halaman ini nanti diganti dengan milik gym Anda. Gym Cakra hanya nama contoh. Alamat websitenya didaftarkan atas nama usaha Anda sendiri, misalnya namagymanda.com.</p>
 <div class="aksi"><a class="tombol" href="/gym/#paket">Lihat paket dan harga</a><a class="tombol garis" href="https://devario.rioeka.com/#harga">Lihat paket dan harga</a></div></div>
 </section>
 </div>
 </main>
-<footer class="kaki"><div class="wadah"><p>Pertanyaan soal latihan dan membership:</p><p><a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20soal%20latihan%20di%20Gym%20Cakra.">WhatsApp 0812-3456-7890</a></p><p>Halaman ini contoh tampilan, bukan usaha sungguhan. Dibuat oleh Devario, jasa pembuatan website untuk usaha lokal.</p></div></footer>
-<div class="bar-bawah" id="bar-bawah"><a class="tombol" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20soal%20latihan%20di%20Gym%20Cakra."><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.6-5.4A8.4 8.4 0 1 1 21 11.5Z"/></svg> Tanya lewat WhatsApp</a></div>
+<footer class="kaki"><div class="wadah"><p>Pesan dan pertanyaan:</p><p><a href="https://wa.me/6281234567893?text=Halo%2C%20saya%20mau%20tanya%20soal%20jadwal%20latihan%20di%20Gym%20Cakra.">WhatsApp 0812-3456-7893</a></p><p>Halaman ini contoh tampilan, bukan usaha sungguhan. Dibuat oleh Devario, jasa pembuatan website untuk usaha lokal.</p></div></footer>
+<div class="bar-bawah" id="bar-bawah"><a class="tombol" href="#pesan">Pesan sekarang</a><a class="tombol garis" href="https://wa.me/6281234567893?text=Halo%2C%20saya%20mau%20tanya%20soal%20jadwal%20latihan%20di%20Gym%20Cakra.">WhatsApp</a></div>
 <script>
+
 (function(){
   var J={"0": ["07.00", "17.00"], "1": ["06.00", "21.00"], "2": ["06.00", "21.00"], "3": ["06.00", "21.00"], "4": ["06.00", "21.00"], "5": ["06.00", "21.00"], "6": ["07.00", "20.00"]};
   var NH=["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
   var kini=new Date(), hari=kini.getDay(), menitKini=kini.getHours()*60+kini.getMinutes();
   function mnt(t){var p=t.split(".");return (+p[0])*60+(+p[1])}
+  function f(m){var j=Math.floor(m/60),s=m%60;return (j<10?"0":"")+j+"."+(s<10?"0":"")+s}
   var teks=document.getElementById("status-teks"), titik=document.getElementById("titik");
   var baris=document.querySelector('#kartu-jam [data-hari="'+hari+'"]');
   if(baris){baris.className="hari-ini";var t=document.createElement("span");t.className="tanda-hari";t.textContent="hari ini";baris.firstElementChild.appendChild(t)}
   var blok=J[hari];
-  function berikut(){for(var n=1;n<=7;n++){var h=(hari+n)%7;if(J[h]){return NH[h]+" pukul "+J[h][0]}}return ""}
-  if(blok&&menitKini>=mnt(blok[0])&&menitKini<mnt(blok[1])){teks.textContent="Buka sekarang, tutup pukul "+blok[1];titik.className="titik"}
-  else if(blok&&menitKini<mnt(blok[0])){teks.textContent="Tutup. Buka hari ini pukul "+blok[0];titik.className="titik tutup"}
-  else{teks.textContent="Tutup. Buka lagi "+berikut();titik.className="titik tutup"}
+  function berikut(){
+    for(var n=1;n<=7;n++){var h=(hari+n)%7;if(J[h]){return NH[h]+" pukul "+J[h][0]}}
+    return "";
+  }
+  if(blok&&menitKini>=mnt(blok[0])&&menitKini<mnt(blok[1])){
+    teks.textContent="Buka sekarang, tutup pukul "+blok[1];titik.className="titik";
+  }else if(blok&&menitKini<mnt(blok[0])){
+    teks.textContent="Tutup. Buka hari ini pukul "+blok[0];titik.className="titik tutup";
+  }else{
+    teks.textContent="Tutup. Buka lagi "+berikut();titik.className="titik tutup";
+  }
 })();
 </script>
 <script>
+
 (function(){
-  var LAYANAN=[{"id": "kunjungan", "nm": "Kunjungan harian", "sub": "Bebas pakai alat sepanjang jam buka", "hr": "Rp 50.000", "n": 50000}, {"id": "kelas", "nm": "Kelas grup", "sub": "Kuota 12 orang per kelas", "hr": "Rp 35.000", "n": 35000}, {"id": "pt", "nm": "Sesi personal trainer", "sub": "60 menit, satu lawan satu", "hr": "Rp 150.000", "n": 150000}, {"id": "trial", "nm": "Coba gratis", "sub": "Sekali per orang, termasuk pendampingan alat", "hr": "Gratis", "n": 0}], TRAINER=[{"id": "cakra", "nm": "Cakra", "sub": "Strength dan powerlifting"}, {"id": "bagas", "nm": "Bagas", "sub": "Muay thai dan conditioning"}, {"id": "nadia", "nm": "Nadia", "sub": "Yoga dan mobility"}, {"id": "siapa", "nm": "Terserah, siapa saja", "sub": "Disesuaikan jadwal yang kosong"}], SLOT=["06.00", "07.00", "08.00", "09.00", "10.00", "11.00", "15.00", "16.00", "17.00", "18.00", "19.00", "20.00"];
-  var PAKET=2, JUMLAH_LANGKAH=5;
-  var panel=document.getElementById("pesan-panel"), buka=document.getElementById("buka-pesan");
-  if(!panel||!buka) return;
-  var form=document.getElementById("form-pesan"), nav=document.getElementById("nav");
-  var kembali=document.getElementById("kembali"), lanjut=document.getElementById("lanjut"), ulang=document.getElementById("ulang");
-  var langkah=1, state={layanan:[],trainer:null,tanggal:null,jam:null,nama:"",wa:"",bayar:"qris"};
-  function tunjuk(n){
-    langkah=n;
-    form.querySelectorAll(".langkah").forEach(function(el){el.hidden = (+el.dataset.l!==n)});
-    nav.querySelectorAll("li").forEach(function(li){var v=+li.dataset.nav;li.className = v<n?"selesai":(v===n?"aktif":"")});
-    kembali.hidden = n===1 || n>=JUMLAH_LANGKAH;
-    ulang.hidden = n<JUMLAH_LANGKAH;
-    lanjut.textContent = n===JUMLAH_LANGKAH-1 ? "Kirim pesanan" : "Lanjut";
-    lanjut.hidden = n>=JUMLAH_LANGKAH;
-    if(n===JUMLAH_LANGKAH){lanjut.hidden=true;kembali.hidden=true;ulang.hidden=false}
-    panel.scrollIntoView({block:"start",behavior:"smooth"});
-  }
-  buka.addEventListener("click",function(){panel.hidden=false;buka.closest(".pesan-buka").hidden=true;tunjuk(1)});
-  ulang.addEventListener("click",function(){
-    state={layanan:[],trainer:null,tanggal:null,jam:null,nama:"",wa:"",bayar:"qris"};
-    form.querySelectorAll('input[type=checkbox]').forEach(function(i){i.checked=false});
-    form.querySelectorAll("[data-trainer]").forEach(function(b){b.setAttribute("aria-pressed","false")});
-    document.getElementById("isian-nama").value="";document.getElementById("isian-wa").value="";
-    gambarHari();tunjuk(1);
-  });
-  function rupiah(n){return "Rp "+n.toLocaleString("id-ID")}
-  function total(){return state.layanan.reduce(function(s,id){var l=LAYANAN.filter(function(x){return x.id===id})[0];return s+(l?l.n:0)},0)}
-  form.querySelectorAll('input[name=layanan]').forEach(function(i){
-    i.addEventListener("change",function(){
-      state.layanan=[].map.call(form.querySelectorAll('input[name=layanan]:checked'),function(x){return x.value});
-      document.getElementById("galat-1").hidden=state.layanan.length>0;
+  var D={"noun": "Trainer", "kode": "GC", "wa": "6281234567893", "siapaSaja": "Terserah, siapa saja", "siapaSajaKet": "Kami yang menentukan", "grup": [{"nama": "Kunjungan dan membership", "item": [{"nama": "Kunjungan harian", "harga": 50000, "menit": 90, "ket": "Bebas waktu, bayar di tempat atau QRIS."}, {"nama": "Paket 10 kunjungan", "harga": 450000, "menit": 90, "ket": "Berlaku 2 bulan, hemat Rp 50.000."}, {"nama": "Membership bulanan", "harga": 700000, "menit": 90, "ket": "30 hari, semua alat dan kelas grup."}, {"nama": "Membership 3 bulan", "harga": 1800000, "menit": 90, "ket": "90 hari, hemat Rp 300.000."}, {"nama": "Membership 6 bulan", "harga": 3300000, "menit": 90, "ket": "180 hari, bisa dibayar dua kali."}]}, {"nama": "Kelas grup", "item": [{"nama": "Muay thai", "harga": 50000, "menit": 60, "ket": "Selasa dan Kamis, 19.00."}, {"nama": "Yoga", "harga": 40000, "menit": 60, "ket": "Rabu, 18.30. Bawa matras sendiri."}, {"nama": "Zumba", "harga": 35000, "menit": 45, "ket": "Jumat, 18.30."}, {"nama": "Body pump", "harga": 40000, "menit": 45, "ket": "Sabtu, 08.00."}, {"nama": "Kelas pemula", "harga": 35000, "menit": 45, "ket": "Minggu, 08.00, dibimbing dari nol."}]}, {"nama": "Personal trainer", "item": [{"nama": "Sesi personal trainer", "harga": 150000, "menit": 60, "ket": "Termasuk program latihan hari itu."}, {"nama": "Paket 5 sesi", "harga": 700000, "menit": 300, "ket": "5 x 60 menit, hemat Rp 50.000."}, {"nama": "Paket 10 sesi", "harga": 1300000, "menit": 600, "ket": "10 x 60 menit, hemat Rp 200.000."}, {"nama": "Program 1 bulan", "harga": 2500000, "menit": 720, "ket": "12 sesi, termasuk arahan makan."}, {"nama": "Ukur komposisi tubuh", "harga": 50000, "menit": 15, "ket": "Berat, lemak, otot, dan air tubuh."}]}], "stylist": [{"nama": "Cakra", "keahlian": "Angkat beban dan program pemula", "rinci": "Menemani sesi pertama dan menyusun program latihan.", "bisa": ["Kunjungan harian", "Paket 10 kunjungan", "Membership bulanan", "Membership 3 bulan", "Membership 6 bulan", "Sesi personal trainer", "Program 1 bulan", "Ukur komposisi tubuh"]}, {"nama": "Bagas", "keahlian": "Kelas muay thai dan body pump", "rinci": "Kelas grup intensitas tinggi dan teknik angkat.", "bisa": ["Muay thai", "Body pump", "Paket 5 sesi", "Paket 10 sesi"]}, {"nama": "Nadia", "keahlian": "Yoga, zumba, dan kelas pemula", "rinci": "Kelas grup ringan sampai sedang.", "bisa": ["Yoga", "Zumba", "Kelas pemula", "Paket 5 sesi"]}], "jam": {"0": ["07.00", "17.00"], "1": ["06.00", "21.00"], "2": ["06.00", "21.00"], "3": ["06.00", "21.00"], "4": ["06.00", "21.00"], "5": ["06.00", "21.00"], "6": ["07.00", "20.00"]}, "bayarNanti": ""};
+  var $=function(s,r){return (r||document).querySelector(s)};
+  var $$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
+  var NH=["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
+  var NB=["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
+  var redam=window.matchMedia&&window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+  function rp(n){return "Rp "+n.toLocaleString("id-ID")}
+  function fmt(m){var j=Math.floor(m/60),s=m%60;return (j<10?"0":"")+j+"."+(s<10?"0":"")+s}
+  function mnt(t){var p=t.split(".");return (+p[0])*60+(+p[1])}
+  function kunci(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+  function acak(s){var h=0;for(var k=0;k<s.length;k++){h=(h*31+s.charCodeAt(k))>>>0}return (h%100)/100}
+  function el(tag,cls,txt){var e=document.createElement(tag);if(cls){e.className=cls}if(txt!=null){e.textContent=txt}return e}
+  function ikonCentang(){var n="http://www.w3.org/2000/svg",s=document.createElementNS(n,"svg");s.setAttribute("class","ikon");s.setAttribute("viewBox","0 0 24 24");s.setAttribute("aria-hidden","true");var p=document.createElementNS(n,"path");p.setAttribute("d","M20 6 9 17l-5-5");s.appendChild(p);return s}
+
+  var infoStylist, daftarStylist=[];
+  var S={layanan:[],stylist:null,tgl:null,jam:null,nama:"",wa:""};
+  var LANGKAH=[["layanan","Layanan"],["stylist",D.noun],["waktu","Waktu"],["data","Data Anda"],["tinjau","Periksa"]];
+  var IDX={};LANGKAH.forEach(function(l,n){IDX[l[0]]=n});
+  var i=0, dariTinjau=false, mulai=true;
+
+  var kartu=$("#pesan"), alur=$("#alur"), selesaiEl=$("#selesai");
+  var btnLanjut=$("#lanjut"), btnKembali=$("#kembali"), barisAksi=$("#baris-aksi");
+  var mini=$("#mini"), pesanSistem=$("#pesan-sistem");
+  var panel={};$$(".panel[data-langkah]",alur).forEach(function(p){panel[p.dataset.langkah]=p});
+
+  function tanggalTeks(d){return NH[d.getDay()]+", "+d.getDate()+" "+NB[d.getMonth()]}
+  function waktuTeks(){return S.tgl&&S.jam!==null?tanggalTeks(S.tgl.d)+", pukul "+fmt(S.jam):""}
+  function total(){var t=0;S.layanan.forEach(function(l){t+=l.harga});return t}
+  function durasi(){var t=0;S.layanan.forEach(function(l){t+=l.menit});return t}
+  function durTeks(m){var j=Math.floor(m/60),s=m%60;return (j?j+" jam":"")+(j&&s?" ":"")+(s?s+" menit":"")}
+  function namaLayanan(){return S.layanan.map(function(l){return l.nama})}
+
+  /* langkah 1: layanan */
+  var daftarLayanan=[];
+  (function(){
+    var kotak=$("#pilih-layanan");
+    D.grup.forEach(function(g){
+      kotak.appendChild(el("h4","sub",g.nama));
+      var daftar=el("div","opsi-daftar");
+      g.item.forEach(function(l){
+        var lb=el("label","opsi cek"), inp=el("input"), kk=el("span","opsi-kotak");
+        inp.type="checkbox";inp.name="layanan";inp.value=l.nama;daftarLayanan.push({l:l,inp:inp});
+        kk.appendChild(el("span","opsi-tanda"));
+        kk.appendChild(el("span","opsi-nama",l.nama));
+        kk.appendChild(el("span","opsi-harga",rp(l.harga)));
+        kk.appendChild(el("span","opsi-ket","Sekitar "+l.menit+" menit"+(l.ket?" · "+l.ket:"")));
+        lb.appendChild(inp);lb.appendChild(kk);daftar.appendChild(lb);
+        inp.addEventListener("change",function(){
+          S.layanan=daftarLayanan.filter(function(x){return x.inp.checked}).map(function(x){return x.l});
+          selarasStylist();bersih();perbarui();
+        });
+      });
+      kotak.appendChild(daftar);
     });
-  });
-  form.querySelectorAll("[data-trainer]").forEach(function(b){
+  })();
+
+  /* langkah 2: stylist */
+  (function(){
+    var kotak=$("#pilih-stylist"), daftar=el("div","opsi-daftar");
+    infoStylist=el("p","tip info-stylist");infoStylist.hidden=true;
+    kotak.appendChild(infoStylist);
+    [{nama:D.siapaSaja,keahlian:D.siapaSajaKet,rinci:"",bisa:null}].concat(D.stylist).forEach(function(s){
+      var lb=el("label","opsi"), inp=el("input"), kk=el("span","opsi-kotak"), ket=el("span","opsi-ket");
+      inp.type="radio";inp.name="stylist";inp.value=s.nama;
+      kk.appendChild(el("span","opsi-tanda"));
+      kk.appendChild(el("span","opsi-nama",s.nama));
+      kk.appendChild(ket);
+      lb.appendChild(inp);lb.appendChild(kk);daftar.appendChild(lb);
+      daftarStylist.push({s:s,inp:inp,ket:ket});
+      inp.addEventListener("change",function(){S.stylist=s.nama;bersih();perbarui()});
+    });
+    kotak.appendChild(daftar);
+    selarasStylist();
+  })();
+  function kurang(s){
+    if(!s.bisa){return []}
+    return namaLayanan().filter(function(n){return s.bisa.indexOf(n)<0});
+  }
+  function selarasStylist(){
+    var ada=0, semua=0;
+    daftarStylist.forEach(function(x){
+      if(!x.s.bisa){return}
+      semua++;
+      var k=kurang(x.s);
+      x.inp.disabled=k.length>0;
+      if(k.length){
+        x.ket.textContent=x.s.keahlian+" · Tidak mengerjakan "+k.join(", ");
+        if(x.inp.checked){x.inp.checked=false;S.stylist=null}
+      }else{
+        ada++;
+        x.ket.textContent=[x.s.keahlian,x.s.rinci].filter(Boolean).join(" · ");
+      }
+    });
+    var pecah=S.layanan.length>1&&ada===0;
+    var s0=daftarStylist[0];
+    if(s0){
+      s0.ket.textContent=pecah?"Tiap layanan dikerjakan "+D.noun.toLowerCase()+" yang sesuai":D.siapaSajaKet;
+    }
+    infoStylist.hidden=!(S.layanan.length&&semua&&ada<semua);
+    infoStylist.textContent=pecah
+      ?"Layanan yang Anda pilih dikerjakan oleh lebih dari satu "+D.noun.toLowerCase()+". Pilih \""+D.siapaSaja+"\", kami yang mengatur."
+      :D.noun+" yang tidak bisa dipilih tidak mengerjakan salah satu layanan Anda.";
+  }
+
+  /* langkah 3: tanggal dan jam */
+  var hariKotak=$("#pilih-hari"), jamKotak=$("#pilih-jam"), jamJudul=$("#jam-judul");
+  for(var n=0;n<14;n++){(function(n){
+    var t=new Date();t.setHours(0,0,0,0);t.setDate(t.getDate()+n);
+    var blok=D.jam[String(t.getDay())];
+    var b=el("button","hari");b.type="button";b.disabled=!blok;b.setAttribute("aria-pressed","false");
+    b.appendChild(el("span","hr",n===0?"Hari ini":NH[t.getDay()].slice(0,3)));
+    b.appendChild(el("span","tg",String(t.getDate())));
+    b.appendChild(el("span","bl",blok?NB[t.getMonth()].slice(0,3):"Tutup"));
+    b.setAttribute("aria-label",tanggalTeks(t)+(blok?"":", tutup"));
     b.addEventListener("click",function(){
-      state.trainer=b.dataset.trainer;
-      form.querySelectorAll("[data-trainer]").forEach(function(x){x.setAttribute("aria-pressed", x===b?"true":"false")});
-      gambarSlot();
+      $$("button",hariKotak).forEach(function(x){x.setAttribute("aria-pressed","false")});
+      b.setAttribute("aria-pressed","true");
+      S.tgl={d:t,kunci:kunci(t),blok:blok};S.jam=null;gambarJam();bersih();perbarui();
+      if(window.__bookingApi){window.__bookingApi.muat(S.tgl.kunci).then(function(){gambarJam()},function(){})}
     });
-  });
-  function duaMinggu(){
-    var out=[], d=new Date(); d.setHours(0,0,0,0);
-    for(var i=0;i<14;i++){var x=new Date(d.getTime()+i*86400000);out.push(x)}
-    return out;
-  }
-  function gambarHari(){
-    var w=document.getElementById("hari-baris"); if(!w) return; w.innerHTML="";
-    var NH=["Min","Sen","Sel","Rab","Kam","Jum","Sab"], NB=["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
-    duaMinggu().forEach(function(d){
-      var b=document.createElement("button");
-      b.type="button";b.className="chip";
-      b.innerHTML=NH[d.getDay()]+" "+d.getDate()+"/"+(d.getMonth()+1);
-      b.setAttribute("aria-label",NB[d.getDay()]+" "+d.getDate()+" "+(d.getMonth()+1));
-      if(state.tanggal && d.toDateString()===state.tanggal.toDateString()) b.setAttribute("aria-pressed","true");
-      b.addEventListener("click",function(){
-        state.tanggal=d; state.jam=null;
-        w.querySelectorAll("button").forEach(function(o){o.setAttribute("aria-pressed","false")});
-        b.setAttribute("aria-pressed","true"); gambarSlot();
-      });
-      w.appendChild(b);
-    });
-  }
-  function gambarSlot(){
-    var w=document.getElementById("slot-baris"); if(!w) return; w.innerHTML="";
-    if(!state.tanggal){w.innerHTML='<p class="catatan">Pilih tanggal dulu.</p>';return}
-    var idxTrainer=Math.max(0,TRAINER.findIndex(function(t){return t.id===state.trainer}));
-    var kini=new Date();
-    SLOT.forEach(function(j,ix){
-      var b=document.createElement("button");b.type="button";b.textContent=j;
-      var penuh = ((state.tanggal.getDate()+ix+idxTrainer)%4===0);
-      var lewat = state.tanggal.toDateString()===kini.toDateString() && (parseInt(j,10)<kini.getHours());
-      if(penuh||lewat){b.disabled=true}
-      else if(state.jam===j){b.setAttribute("aria-pressed","true")}
-      b.addEventListener("click",function(){
-        state.jam=j; w.querySelectorAll("button").forEach(function(o){o.removeAttribute("aria-pressed")});
-        b.setAttribute("aria-pressed","true"); document.getElementById("galat-2").hidden=true;
-      });
-      w.appendChild(b);
-    });
-  }
-  function ringkas(el){
-    var baris=[];
-    baris.push(["Layanan", state.layanan.map(function(id){var l=LAYANAN.filter(function(x){return x.id===id})[0];return l?l.nm:"-"}).join(", ")||"-"]);
-    var tr=TRAINER.filter(function(t){return t.id===state.trainer})[0];
-    baris.push(["Trainer", tr?tr.nm:"Belum dipilih"]);
-    var tgl=state.tanggal? state.tanggal.getDate()+"/"+(state.tanggal.getMonth()+1)+"/"+state.tanggal.getFullYear():"-";
-    baris.push(["Tanggal", tgl]);
-    baris.push(["Jam", state.jam||"-"]);
-    if(state.nama) baris.push(["Nama", state.nama]);
-    if(PAKET===3) baris.push(["Cara bayar", state.bayar==="qris"?"QRIS":"Transfer bank"]);
-    el.innerHTML=baris.map(function(b){return '<div><span class="k">'+b[0]+'</span><span class="v">'+b[1]+'</span></div>'}).join("")
-      +'<div class="total"><span class="k">Total</span><span class="v">'+rupiah(total())+'</span></div>';
-  }
-  lanjut.addEventListener("click",function(){
-    if(langkah===1){
-      if(!state.layanan.length){document.getElementById("galat-1").hidden=false;return}
-      document.getElementById("galat-1").hidden=true; gambarHari(); tunjuk(2); return;
+    hariKotak.appendChild(b);
+  })(n)}
+
+  function gambarJam(){
+    window.__layananAktif=(S.layanan||[]).map(function(l){return l.nama});
+    window.__stafAktif=S.stylist;
+    jamKotak.textContent="";
+    if(!S.tgl||!S.tgl.blok){jamJudul.textContent="Pilih tanggal dulu";return}
+    var b=S.tgl.blok, sekarang=new Date(), a=[], tersedia=0;
+    var dariApi=window.__apiSlot?window.__apiSlot(S.tgl.kunci):null;
+    if(dariApi){a=dariApi.map(function(t){var p=String(t).split(":");return (+p[0])*60+(+p[1])})}
+    else{
+      for(var m=mnt(b[0]);m+30<=mnt(b[1]);m+=30){a.push(m)}
+      if(window.__bookingApi&&window.__apiPerlu&&window.__apiPerlu(S.tgl.kunci)){
+        window.__bookingApi.muat(S.tgl.kunci).then(function(){gambarJam()},function(){});
+      }
     }
-    if(langkah===2){
-      if(!state.tanggal||!state.jam){document.getElementById("galat-2").hidden=false;return}
-      document.getElementById("galat-2").hidden=true; tunjuk(3); return;
+    a.forEach(function(m){
+      var x=el("button",null,fmt(m));x.type="button";x.setAttribute("aria-pressed","false");
+      var lewat=S.tgl.kunci===kunci(sekarang)&&m<=sekarang.getHours()*60+sekarang.getMinutes();
+      var kh=S.tgl.kunci+"#"+m;
+      var penuh=dariApi?false:(acak(kh)<0.22);
+      x.disabled=lewat||penuh;
+      if(penuh){x.setAttribute("aria-label",fmt(m)+", sudah terisi")}
+      else if(lewat){x.setAttribute("aria-label",fmt(m)+", sudah lewat")}
+      else{tersedia++}
+      x.addEventListener("click",function(){
+        $$("button",jamKotak).forEach(function(y){y.setAttribute("aria-pressed","false")});
+        x.setAttribute("aria-pressed","true");S.jam=m;bersih();perbarui();
+      });
+      jamKotak.appendChild(x);
+    });
+    jamJudul.textContent=tersedia?"Pilih jam, "+tanggalTeks(S.tgl.d):"Semua jam hari ini sudah terisi atau lewat. Pilih hari lain.";
+  }
+  (function(){
+    var tombol=$$("button",hariKotak);
+    for(var k=0;k<tombol.length;k++){
+      if(tombol[k].disabled){continue}
+      tombol[k].click();
+      if($$("button:not(:disabled)",jamKotak).length>=2){break}
     }
-    if(langkah===3){
-      var nm=document.getElementById("isian-nama").value.trim(), wa=document.getElementById("isian-wa").value.trim();
-      if(nm.length<2||wa.length<8){document.getElementById("galat-3").hidden=false;return}
-      state.nama=nm; state.wa=wa;
-      document.getElementById("galat-3").hidden=true;
-      var target=PAKET===3?4:4;
-      if(PAKET===3){tunjuk(4)} else {ringkas(document.getElementById("ringkas")); tunjuk(JUMLAH_LANGKAH-1)}
+    S.jam=null;$$("button",jamKotak).forEach(function(y){y.setAttribute("aria-pressed","false")});
+  })();
+  function gulirHari(){
+    var p=$('button[aria-pressed="true"]',hariKotak);
+    if(p){hariKotak.scrollLeft=Math.max(0,p.offsetLeft-16)}
+  }
+
+  /* langkah 4: data */
+  var inNama=$("#nama"), inWa=$("#wa");
+  function salahDi(inp,pesan){
+    var id=inp.id+"-salah", e=document.getElementById(id);
+    if(!pesan){
+      inp.removeAttribute("aria-invalid");inp.removeAttribute("aria-describedby");
+      if(e){e.remove()}
       return;
     }
-    if(PAKET===3&&langkah===4){
-      var by=form.querySelector('input[name=bayar]:checked'); state.bayar=by?by.value:"qris";
-      ringkas(document.getElementById("ringkas")); tunjuk(JUMLAH_LANGKAH-1); return;
+    if(!e){e=el("span","salah");e.id=id;inp.parentNode.appendChild(e)}
+    e.textContent=pesan;inp.setAttribute("aria-invalid","true");inp.setAttribute("aria-describedby",id);
+  }
+  function namaOk(){return S.nama.length>=2}
+  function waOk(){return S.wa.replace(/\D/g,"").length>=9}
+  inNama.addEventListener("input",function(){S.nama=this.value.trim();salahDi(inNama,"");bersih();perbarui()});
+  inWa.addEventListener("input",function(){S.wa=this.value.replace(/[^0-9+]/g,"");salahDi(inWa,"");bersih();perbarui()});
+  [inNama,inWa].forEach(function(x){x.addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();btnLanjut.click()}})});
+
+  /* langkah 5: tinjau */
+  var tinjauEl=$("#tinjau");
+  function barisTinjau(label,nilai,langkah){
+    var d=el("div"), dt=el("dt",null,label), dd=el("dd",null,nilai);
+    d.appendChild(dt);d.appendChild(dd);
+    if(langkah){
+      var u=el("button","ubah","Ubah");u.type="button";
+      u.setAttribute("aria-label","Ubah "+label.toLowerCase());
+      u.addEventListener("click",function(){dariTinjau=true;pergi(IDX[langkah],true)});
+      d.appendChild(u);
     }
-    if(langkah===JUMLAH_LANGKAH-1){
-      var kode="CX-"+String(Math.floor(Math.random()*9000)+1000);
-      document.getElementById("kode").textContent=kode;
-      ringkas(document.getElementById("ringkas-selesai"));
-      tunjuk(JUMLAH_LANGKAH); return;
+    return d;
+  }
+  function isiTinjau(){
+    tinjauEl.textContent="";
+    tinjauEl.appendChild(barisTinjau("Layanan",S.layanan.map(function(l){return l.nama+", "+rp(l.harga)}).join("\n"),"layanan"));
+    tinjauEl.appendChild(barisTinjau(D.noun,S.stylist,"stylist"));
+    tinjauEl.appendChild(barisTinjau("Waktu",waktuTeks(),"waktu"));
+    tinjauEl.appendChild(barisTinjau("Nama",S.nama,"data"));
+    tinjauEl.appendChild(barisTinjau("WhatsApp",S.wa,"data"));
+    var dur=barisTinjau("Perkiraan lama",durTeks(durasi()));dur.className="rw";tinjauEl.appendChild(dur);
+    var tot=barisTinjau(S.layanan.length>1?"Total harga":"Harga layanan",rp(total()));tot.className="total";tinjauEl.appendChild(tot);
+  }
+
+  /* inti alur */
+  function galat(id){
+    if(id==="layanan"){return S.layanan.length?"":"Pilih minimal satu layanan untuk lanjut."}
+    if(id==="stylist"){return S.stylist?"":"Pilih "+D.noun.toLowerCase()+", atau pilih "+D.siapaSaja.toLowerCase()+"."}
+    if(id==="waktu"){return !S.tgl?"Pilih tanggal dulu.":(S.jam===null?"Pilih jam yang masih kosong.":"")}
+    if(id==="data"){return !namaOk()?"Isi nama Anda untuk lanjut.":(!waOk()?"Nomor WhatsApp belum lengkap.":"")}
+    return "";
+  }
+  function bersih(){pesanSistem.textContent=""}
+  function labelLanjut(id){
+    if(id==="tinjau"){return "Konfirmasi pesanan"}
+    return "Lanjut";
+  }
+  function ringkasLayanan(){
+    return S.layanan.length>1?S.layanan.length+" layanan "+rp(total()):S.layanan[0].nama+" "+rp(total());
+  }
+  function ringkasMini(id){
+    var p=[];
+    if(S.layanan.length&&id!=="layanan"){p.push(ringkasLayanan())}
+    if(S.stylist&&IDX[id]>IDX.stylist){p.push(S.stylist)}
+    if(S.jam!==null&&IDX[id]>IDX.waktu){p.push(waktuTeks())}
+    return p.join(" · ");
+  }
+  function perbarui(){
+    window.__layananAktif=(S.layanan||[]).map(function(l){return l.nama});
+    window.__stafAktif=S.stylist;
+    var id=LANGKAH[i][0], g=galat(id), total=LANGKAH.length;
+    $("#l-no").textContent="Langkah "+(i+1)+" dari "+total;
+    $("#l-nama").textContent=LANGKAH[i][1];
+    $("#progres-isi").style.width=((i+1)/total*100)+"%";
+    $("#progres").setAttribute("aria-valuenow",String(i+1));
+    $("#progres").setAttribute("aria-valuetext","Langkah "+(i+1)+" dari "+total+", "+LANGKAH[i][1]);
+    btnLanjut.textContent=labelLanjut(id);
+    if(id==="waktu"&&window.__bookingApi&&window.__apiPerlu&&window.__apiPerlu(S.tgl?S.tgl.kunci:"")){
+      window.__bookingApi.muat(S.tgl?S.tgl.kunci:"").then(function(){gambarJam()},function(){});
     }
+    btnLanjut.setAttribute("aria-disabled",g?"true":"false");
+    barisAksi.className="baris-aksi"+(i===0?" tanpa-kembali":"");
+    btnKembali.hidden=i===0;
+    if(g){mini.innerHTML="";mini.textContent=g}
+    else{
+      mini.textContent="";var r=ringkasMini(id);
+      if(r){mini.textContent=r}
+      else if(id==="layanan"&&S.layanan.length){mini.textContent=ringkasLayanan()+" · sekitar "+durTeks(durasi())}
+    }
+    mini.hidden=!mini.textContent;
+  }
+  function pergi(n,fokus){
+    i=n;
+    LANGKAH.forEach(function(l,k){panel[l[0]].hidden=k!==i});
+    var id=LANGKAH[i][0];
+    if(id==="waktu"){gulirHari()}
+    if(id==="stylist"){selarasStylist()}
+    if(id==="tinjau"){isiTinjau()}
+    bersih();perbarui();
+    if(mulai){return}
+    var h=$("h3",panel[id]);
+    if(h){h.focus({preventScroll:true})}
+    var r=kartu.getBoundingClientRect();
+    if(r.top<96||r.top>window.innerHeight*0.5){kartu.scrollIntoView({block:"start",behavior:redam?"auto":"smooth"})}
+  }
+  function fokusKeSalah(id){
+    var f=null;
+    if(id==="layanan"){f=$('input[name="layanan"]')}
+    else if(id==="stylist"){f=$('input[name="stylist"]')}
+    else if(id==="waktu"){f=!S.tgl?$("button:not(:disabled)",hariKotak):$("button:not(:disabled)",jamKotak)}
+    else if(id==="data"){f=!namaOk()?inNama:inWa}
+    if(f){f.focus()}
+  }
+  btnLanjut.addEventListener("click",function(){
+    var id=LANGKAH[i][0];
+    if(btnLanjut.getAttribute("aria-busy")==="true"){return}
+    var g=galat(id);
+    if(g){
+      if(id==="data"){
+        salahDi(inNama,namaOk()?"":"Isi nama supaya kami tahu harus memanggil siapa.");
+        salahDi(inWa,waOk()?"":"Isi nomor yang aktif di WhatsApp. Contoh: 0812 3456 7890");
+      }else{pesanSistem.textContent=g}
+      fokusKeSalah(id);
+      return;
+    }
+    if(id==="tinjau"){selesaiPesan(btnLanjut);return}
+    if(dariTinjau){dariTinjau=false;pergi(IDX.tinjau,true);return}
+    pergi(i+1,true);
   });
-  kembali.addEventListener("click",function(){
-    if(langkah===JUMLAH_LANGKAH-1&&PAKET===3){tunjuk(4)}
-    else if(langkah>1){tunjuk(langkah-1)}
+  btnKembali.addEventListener("click",function(){
+    if(dariTinjau){dariTinjau=false;pergi(IDX.tinjau,true);return}
+    pergi(i-1,true);
   });
-  gambarHari();
+
+  function kode(){
+    var t=S.tgl.d;
+    return D.kode+"-"+String(t.getDate()).padStart(2,"0")+String(t.getMonth()+1).padStart(2,"0")+"-"+fmt(S.jam).replace(".","");
+  }
+  function selesaiPesan(tombol){
+    tombol.setAttribute("aria-busy","true");tombol.textContent="Memproses…";
+    var tapil=function(kodeNyata){
+      var kd=kodeNyata||kode();
+      tombol.removeAttribute("aria-busy");tombol.textContent="Pesan";
+      alur.hidden=true;selesaiEl.hidden=false;
+      var c=$("#k-centang");c.textContent="";c.appendChild(ikonCentang());
+      $("#k-kode").textContent=kd;
+      var rk=$("#k-ringkas");rk.textContent="";
+      [["Layanan",S.layanan.map(function(l){return l.nama+", "+rp(l.harga)}).join("\n")],["Total harga",rp(total())],[D.noun,S.stylist],["Waktu",waktuTeks()],["Nama",S.nama]].forEach(function(r){
+        var d=el("div");d.appendChild(el("dt",null,r[0]));d.appendChild(el("dd",null,r[1]));rk.appendChild(d);
+      });
+      $("#k-wa").href="https://wa.me/"+D.wa+"?text="+encodeURIComponent("Halo, saya "+S.nama+". Saya memesan "+namaLayanan().join(", ")+(S.stylist===D.siapaSaja?"":" dengan "+S.stylist)+" pada "+waktuTeks()+". Kode: "+kd);
+      var h=$("h3",selesaiEl);h.focus({preventScroll:true});
+      kartu.scrollIntoView({block:"start",behavior:redam?"auto":"smooth"});
+    };
+    if(window.__bookingApi){
+      window.__bookingApi.pesan({tanggal:S.tgl.kunci,jam:fmt(S.jam),nama:S.nama,wa:S.wa,layanan:S.layanan,stylist:S.stylist})
+        .then(function(r){tapil(r.kode)})
+        .catch(function(e){
+          tombol.removeAttribute("aria-busy");tombol.textContent="Pesan";
+          pesanSistem.textContent=e&&e.message?e.message:"Pesanan gagal dikirim. Coba lagi atau hubungi lewat WhatsApp.";
+        });
+      return;
+    }
+    setTimeout(function(){tapil()},900);
+  }
+  $("#ulang").addEventListener("click",function(){location.reload()});
+
+  var pembuka=$("#pesan-buka"), tombolBuka=$("#buka-pesan");
+  function buka(){
+    if(kartu.hidden){
+      kartu.hidden=false;pembuka.hidden=true;tombolBuka.setAttribute("aria-expanded","true");
+      var h=$("h3",panel[LANGKAH[i][0]]);if(h){h.focus({preventScroll:true})}
+    }
+    kartu.scrollIntoView({block:"start",behavior:redam?"auto":"smooth"});
+  }
+  tombolBuka.addEventListener("click",buka);
+  $$('a[href="#pesan"]').forEach(function(a){a.addEventListener("click",function(ev){ev.preventDefault();buka()})});
+  if(location.hash==="#pesan"){buka()}
+
+  pergi(0);mulai=false;
+})();
+
+(function(){
+  var bar=document.getElementById("bar-bawah"), kartu=document.getElementById("pesan");
+  if(!bar||!kartu||!window.IntersectionObserver){return}
+  new IntersectionObserver(function(e){bar.classList.toggle("sembunyi",e[0].isIntersecting)}).observe(kartu);
 })();
 </script>
 </body>

@@ -42,114 +42,7 @@
   --pole-tinggi:0px;
   --pole:none;
 }
-
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-padding-top:104px;background:var(--latar);accent-color:var(--sinyal)}
-@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
-body{margin:0;overflow-x:clip;background:var(--latar);color:var(--tinta);font-family:Archivo,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.55;padding-bottom:calc(84px + env(safe-area-inset-bottom))}
-h1,h2,h3,p,ul,ol,dl,dd,figure{margin:0}
-ul,ol{padding:0;list-style:none}
-a{color:inherit}
-svg{display:block;flex:none}
-:focus-visible{outline:3px solid var(--fokus);outline-offset:2px}
-::selection{background:var(--sinyal);color:var(--di-atas-sinyal)}
-[hidden]{display:none !important}
-.wadah{width:100%;max-width:760px;margin:0 auto;padding:0 16px}
-.ikon{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-
-.tombol{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 22px;border:2px solid var(--sinyal);border-radius:var(--r-tombol);background:var(--sinyal);color:var(--di-atas-sinyal);font:inherit;font-weight:700;text-decoration:none;text-align:center;cursor:pointer;transition:background-color .15s,border-color .15s}
-.tombol:hover{background:var(--sinyal-gelap);border-color:var(--sinyal-gelap)}
-.tombol.garis{background:transparent;border-color:var(--garis-kuat);color:var(--tinta)}
-.tombol.garis:hover{background:var(--kartu-turun)}
-.tombol[aria-disabled="true"]{background:var(--kartu-turun);border-color:var(--kartu-turun);color:var(--tinta-redup);cursor:not-allowed}
-.tombol[aria-busy="true"]{cursor:progress}
-
-.atas{position:sticky;top:0;z-index:30;background:var(--latar);border-bottom:1px solid var(--garis)}
-.atas .wadah{display:flex;align-items:center;gap:10px;min-height:56px}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.balik{display:inline-flex;align-items:center;gap:2px;min-height:44px;padding:0 12px 0 6px;margin-left:-6px;border-radius:var(--r-tombol);font-weight:600;font-size:15px;text-decoration:none;white-space:nowrap}
-.balik:hover{background:var(--kartu-turun)}
-.nama-atas{margin-left:auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700;font-size:15px;color:var(--tinta-redup)}
-
-.pole{height:var(--pole-tinggi);background:var(--pole)}
-.hero{padding:28px 0 4px}
-.eyebrow{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta-redup)}
-.hero h1{margin:8px 0 14px;font-size:clamp(36px,11vw,56px);font-weight:var(--h-berat);font-stretch:var(--h-lebar);text-transform:var(--h-huruf);letter-spacing:var(--h-ls);line-height:1.02;text-wrap:balance}
-.status{display:inline-flex;align-items:center;gap:9px;padding:8px 14px;border:1px solid var(--garis);border-radius:999px;background:var(--kartu);font-size:15px;font-weight:600}
-.titik{width:10px;height:10px;border-radius:50%;background:var(--ok);flex:none}
-.titik.tutup{background:var(--tinta-redup)}
-.lead{margin-top:14px;max-width:46ch;color:var(--tinta-redup)}
-.aksi{display:grid;gap:10px;margin-top:20px}
-@media (min-width:520px){.aksi{grid-template-columns:auto auto;justify-content:start}}
-.demo-strip{display:flex;justify-content:center;align-items:center;gap:8px;min-height:32px;padding:4px 16px;background:var(--sinyal);color:var(--di-atas-sinyal);font-size:13px;font-weight:600;text-align:center}
-.demo-strip .tanda-contoh{background:var(--di-atas-sinyal);color:var(--sinyal-gelap)}
-.demo-kartu{margin-bottom:22px;padding:16px;border:2px dashed var(--sinyal);border-radius:var(--r);background:var(--sinyal-lembut)}
-.demo-judul{margin-top:10px;font-size:21px;font-weight:800;line-height:1.2;text-wrap:balance}
-.demo-teks{margin-top:8px;font-size:15px}
-.ganti-kepala,.ganti-daftar li{display:grid;grid-template-columns:minmax(0,1fr) 20px minmax(0,1fr);gap:8px;align-items:center}
-.ganti-kepala{margin-top:14px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--tinta-redup)}
-.ganti-daftar{margin-top:4px}
-.ganti-daftar li{padding:10px 0;border-top:1px solid var(--garis);font-size:14px;line-height:1.35}
-.ganti-daftar .kini{color:var(--tinta-redup)}
-.ganti-daftar .nanti{font-weight:700}
-.ganti-daftar .ikon{width:18px;height:18px;color:var(--sinyal-gelap)}
-.demo-paket{margin-top:12px;padding-top:12px;border-top:1px solid var(--garis);font-size:14px}
-.tag-baris{margin-bottom:10px}
-.tag-anda{display:inline-flex;align-items:center;min-height:28px;padding:2px 10px;border:1.5px dashed var(--sinyal);border-radius:999px;background:var(--sinyal-lembut);color:var(--sinyal-gelap);font-size:13px;font-weight:700}
-.hero .tag-baris{margin:0 0 4px}
-.penutup .kartu{padding:20px}
-.penutup h2{font-size:clamp(22px,6vw,28px)}
-.tanda-contoh{flex:none;padding:2px 9px;border-radius:999px;background:var(--sinyal);color:var(--di-atas-sinyal);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
-.loncat{display:flex;gap:8px;overflow-x:auto;margin:20px -16px 0;padding:2px 16px 6px;scrollbar-width:none}
-.loncat::-webkit-scrollbar{display:none}
-.loncat a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1px solid var(--garis-kuat);border-radius:999px;font-weight:600;font-size:15px;text-decoration:none}
-.loncat a:hover{background:var(--kartu-turun)}
-
-.bagian{padding:36px 0 4px}
-.bagian h2{font-size:clamp(26px,7vw,34px);font-weight:var(--h-berat);font-stretch:var(--h-lebar);text-transform:var(--h-huruf);letter-spacing:var(--h-ls);line-height:1.08;text-wrap:balance}
-.bagian-lead{margin-top:8px;max-width:56ch;color:var(--tinta-redup)}
-.kartu{margin-top:16px;padding:16px;border:1px solid var(--garis);border-radius:var(--r);background:var(--kartu);box-shadow:var(--bayang)}
-.kartu > h3{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta-redup)}
-.harga{margin-top:6px}
-.harga li{display:grid;grid-template-columns:1fr auto;gap:2px 16px;padding:14px 0;border-top:1px solid var(--garis)}
-.harga li:first-child{border-top:0}
-.harga .nm{font-weight:600}
-.harga .hr{font-weight:700;white-space:nowrap}
-.harga .ket{grid-column:1 / -1;font-size:14px;color:var(--tinta-redup)}
-.catatan{margin-top:14px;font-size:14px;color:var(--tinta-redup);max-width:60ch}
-.jam li{display:flex;justify-content:space-between;gap:12px;padding:12px 10px;margin:0 -10px;border-radius:var(--r-kecil)}
-.jam li + li{border-top:1px solid var(--garis);border-top-left-radius:0;border-top-right-radius:0}
-.jam li.hari-ini{background:var(--sinyal-lembut);border-top-color:transparent;font-weight:700}
-.jam li.hari-ini + li{border-top-color:transparent}
-.jam .tanda-hari{margin-left:8px;padding:1px 8px;border-radius:999px;background:var(--sinyal);color:var(--di-atas-sinyal);font-size:12px;font-weight:700}
-.alamat{margin-top:16px;font-style:normal;line-height:1.7}
-.aksi-lokasi{display:grid;gap:10px;margin-top:16px}
-@media (min-width:520px){.aksi-lokasi{grid-template-columns:auto auto;justify-content:start}}
-.galeri{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}
-@media (min-width:600px){.galeri{grid-template-columns:repeat(3,minmax(0,1fr))}}
-.petak{margin:0;aspect-ratio:4/3;overflow:hidden;border-radius:var(--r-kecil);background:var(--kartu-turun)}
-.petak img{display:block;width:100%;height:100%;object-fit:cover}
-.kredit{margin-top:12px;font-size:13px;color:var(--tinta-redup)}
-.kredit a{color:inherit;text-decoration:underline;display:inline-block;padding:12px 0}
-.tanya{margin-top:12px;border-bottom:1px solid var(--garis)}
-.tanya details{border-top:1px solid var(--garis)}
-.tanya summary{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:56px;padding:12px 0;font-weight:600;cursor:pointer;list-style:none}
-.tanya summary::-webkit-details-marker{display:none}
-.tanya summary svg{transition:transform .2s}
-.tanya details[open] summary svg{transform:rotate(180deg)}
-.tanya details p{padding:0 0 16px;color:var(--tinta-redup);max-width:60ch}
-.ganti-paket{margin-top:28px;padding:16px;border:1px solid var(--garis);border-radius:var(--r);background:var(--kartu)}
-.ganti-paket p{margin-bottom:12px}
-.kaki{margin-top:36px;padding:28px 0 32px;border-top:1px solid var(--garis);font-size:14px;color:var(--tinta-redup)}
-.kaki p + p{margin-top:10px}
-.kaki a{display:inline-flex;align-items:center;min-height:44px;color:var(--tinta);font-weight:600}
-.bar-bawah{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;gap:10px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:var(--latar);border-top:1px solid var(--garis);transition:transform .25s}
-.bar-bawah.sembunyi{transform:translateY(110%);visibility:hidden}
-.bar-bawah .tombol{flex:1 1 auto;min-height:52px;padding:0 14px;white-space:nowrap}
-.bar-bawah .tombol.garis{flex:0 0 auto}
-@media (min-width:760px){.bar-bawah{display:none}body{padding-bottom:0}}
-@media (prefers-reduced-motion:reduce){*{transition-duration:.001ms !important;animation-duration:.001ms !important}}
-
+https://devario.rioeka.com
 .pesan{padding:16px 16px 16px}
 .kartu.pesan-buka > h3{font-size:20px;font-weight:800;line-height:1.2;letter-spacing:0;text-transform:none;color:var(--tinta)}
 .pesan-buka p{margin:8px 0 16px;max-width:52ch;color:var(--tinta-redup)}
@@ -412,7 +305,7 @@ svg{display:block;flex:none}
 </section>
 <section class="bagian" id="tanya">
 <h2>Pertanyaan yang sering masuk</h2>
-<div class="tanya"><details><summary>Jam check-in dan check-out?<svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Check-in mulai pukul 14.00 dan check-out sebelum pukul 12.00. Di luar jam itu bisa diatur lewat WhatsApp.</p></details><details><summary>Harga sudah termasuk sarapan?<svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Ya, setiap kamar sudah termasuk sarapan. Jumlah porsi mengikuti kapasitas kamar.</p></details><details><summary>Bisa pesan lebih dari satu kamar?<svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Bisa. Pesan lewat WhatsApp untuk jumlah kamar dan tanggalnya, nanti dibantu atur.</p></details><details><summary>Ada air panas?<svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Kamar Deluxe dan Kamar Keluarga menyediakan air panas. Kamar Standar air biasa.</p></details><details><summary>Bisa membatalkan pesanan?<svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Bisa. Kalau uang muka sudah dibayar, uang muka bisa dipakai untuk tanggal lain dengan pemberitahuan lebih dulu.</p></details></div>
+<div class="tanya"><details><summary>Jam check-in dan check-out?<svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Check-in mulai pukul 14.00 dan check-out sebelum pukul 12.00. Di luar jam itu bisa diatur lewat WhatsApp.</p></details><details><summary>Harga sudah termasuk sarapan?<svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Ya, setiap kamar sudah termasuk sarapan. Jumlah porsi mengikuti kapasitas kamar.</p></details><details><summary>Bisa pesan lebih dari satu kamar?<svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Bisa. Pesan lewat WhatsApp untuk jumlah kamar dan tanggalnya, nanti dibantu atur.</p></details><details><summary>Ada air panas?<svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Kamar Deluxe dan Kamar Keluarga menyediakan air panas. Kamar Standar air biasa.</p></details><details><summary>Bisa membatalkan pesanan?<svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Bisa. Kabari lewat WhatsApp paling lambat sehari sebelum tanggal menginap, supaya kamar bisa ditawarkan ke tamu lain.</p></details></div>
 </section>
 <section class="bagian penutup" aria-label="Penutup">
 <div class="kartu"><h2>Bayangkan ini website penginapan Anda</h2>
@@ -426,7 +319,7 @@ svg{display:block;flex:none}
 <script>
 
 (function(){
-  var D={"mode": "inap", "kode": "GA", "wa": "6281234567892", "bayar": false, "muka": 0.3, "mukaTeks": "30 persen", "bayarNanti": "Bayar saat tiba", "checkin": "14.00", "checkout": "12.00", "jam": {"0": ["07.00", "22.00"], "1": ["07.00", "22.00"], "2": ["07.00", "22.00"], "3": ["07.00", "22.00"], "4": ["07.00", "22.00"], "5": ["07.00", "22.00"], "6": ["07.00", "22.00"]}, "kamar": [{"nama": "Kamar Standar", "harga": 350000, "kap": 2, "ket": "Kasur queen, kipas angin, kamar mandi dalam"}, {"nama": "Kamar Deluxe", "harga": 450000, "kap": 3, "ket": "AC, kasur queen, air panas, sarapan untuk dua"}, {"nama": "Kamar Keluarga", "harga": 650000, "kap": 5, "ket": "Dua kamar tidur, AC, dapur kecil, sarapan untuk empat"}]};
+  var D={"mode": "inap", "kode": "GA", "wa": "6281234567892", "bayarNanti": "Bayar saat tiba", "checkin": "14.00", "checkout": "12.00", "jam": {"0": ["07.00", "22.00"], "1": ["07.00", "22.00"], "2": ["07.00", "22.00"], "3": ["07.00", "22.00"], "4": ["07.00", "22.00"], "5": ["07.00", "22.00"], "6": ["07.00", "22.00"]}, "kamar": [{"nama": "Kamar Standar", "harga": 350000, "kap": 2, "ket": "Kasur queen, kipas angin, kamar mandi dalam"}, {"nama": "Kamar Deluxe", "harga": 450000, "kap": 3, "ket": "AC, kasur queen, air panas, sarapan untuk dua"}, {"nama": "Kamar Keluarga", "harga": 650000, "kap": 5, "ket": "Dua kamar tidur, AC, dapur kecil, sarapan untuk empat"}]};
   var $=function(s,r){return (r||document).querySelector(s)};
   var $$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
   var NH=["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
@@ -443,11 +336,10 @@ svg{display:block;flex:none}
   function tambahHari(d,n){var t=new Date(d.getTime());t.setDate(t.getDate()+n);return t}
 
   var INAP=D.mode==="inap";
-  var S={kamar:null,tgl:null,malam:1,dewasa:2,anak:0,qty:{},terima:null,jam:null,alamat:"",catatan:"",nama:"",wa:"",cara:null};
+  var S={kamar:null,tgl:null,malam:1,dewasa:2,anak:0,qty:{},terima:null,jam:null,alamat:"",catatan:"",nama:"",wa:""};
   var LANGKAH=INAP
     ?[["kamar","Kamar"],["tanggal","Tanggal"],["tamu","Tamu"],["data","Data Anda"],["tinjau","Periksa"]]
     :[["menu","Menu"],["terima","Tanggal dan cara terima"],["catatan","Catatan"],["data","Data Anda"],["tinjau","Periksa"]];
-  if(D.bayar){LANGKAH.push(["bayar","Pembayaran"])}
   var IDX={};LANGKAH.forEach(function(l,n){IDX[l[0]]=n});
   var i=0, dariTinjau=false, mulai=true;
 
@@ -511,7 +403,6 @@ svg{display:block;flex:none}
     if(S.terima==="antar"){t+=D.ongkir}
     return t;
   }
-  function muka(){return Math.round(total()*D.muka/500)*500}
   function pesanan(){return semuaMenu.filter(function(m){return (S.qty[m.nama]||0)>0})}
   function jmlItem(){var t=0;pesanan().forEach(function(m){t+=S.qty[m.nama]});return t}
   function lead(){var t=0;pesanan().forEach(function(m){if(m.lead>t){t=m.lead}});return t}
@@ -718,24 +609,8 @@ svg{display:block;flex:none}
       tinjauEl.appendChild(barisTinjau("WhatsApp",S.wa,"data"));
       if(S.terima==="antar"){baris("rw","Ongkos antar",rp(D.ongkir))}
     }
-    if(D.bayar){baris("rw","Bayar muka "+D.mukaTeks,rp(muka()))}
     var tot=barisTinjau(INAP?"Total menginap":"Total pesanan",rp(total()));tot.className="total";tinjauEl.appendChild(tot);
   }
-  function isiBayar(){
-    var a=$("#b-total"), b=$("#b-muka");
-    if(a){a.textContent=rp(total())}
-    if(b){b.textContent=rp(muka())}
-  }
-  $$('input[name="cara"]').forEach(function(r){
-    r.addEventListener("change",function(){
-      S.cara=r.value;
-      var pq=$("#panel-qris"), pt=$("#panel-transfer");
-      if(pq){pq.hidden=r.value!=="qris"}
-      if(pt){pt.hidden=r.value!=="transfer"}
-      bersih();perbarui();
-    });
-  });
-
   function galat(id){
     if(id==="kamar"){return S.kamar?"":"Pilih satu tipe kamar untuk lanjut."}
     if(id==="tanggal"){
@@ -754,13 +629,11 @@ svg{display:block;flex:none}
     }
     if(id==="catatan"){return ""}
     if(id==="data"){return !namaOk()?"Isi nama Anda untuk lanjut.":(!waOk()?"Nomor WhatsApp belum lengkap.":"")}
-    if(id==="bayar"){return S.cara?"":"Pilih cara bayar untuk lanjut."}
     return "";
   }
   function bersih(){pesanSistem.textContent=""}
   function labelLanjut(id){
-    if(id==="tinjau"){return D.bayar?"Lanjut ke pembayaran":"Konfirmasi pesanan"}
-    if(id==="bayar"){return S.cara==="tempat"?"Konfirmasi, "+D.bayarNanti.toLowerCase():(S.cara==="transfer"?"Saya sudah transfer":(S.cara==="qris"?"Saya sudah bayar":"Konfirmasi pembayaran"))}
+    if(id==="tinjau"){return "Konfirmasi pesanan"}
     return "Lanjut";
   }
   function ringkasMini(id){
@@ -803,7 +676,6 @@ svg{display:block;flex:none}
     if(id==="tamu"){selarasTamu();stDewasa.segar();stAnak.segar()}
     if(id==="terima"){gambarHariPesan();gulirHari(hariKotak)}
     if(id==="tinjau"){isiTinjau()}
-    if(id==="bayar"){isiBayar()}
     bersih();perbarui();
     if(mulai){return}
     var h=$("h3",panel[id]);
@@ -820,7 +692,6 @@ svg{display:block;flex:none}
       f=!S.tgl?$("button:not(:disabled)",hariKotak):(!S.terima?$('input[name="terima"]'):(S.jam===null?$("button:not(:disabled)",jamKotak):$("#alamat")));
     }
     else if(id==="data"){f=!namaOk()?inNama:inWa}
-    else if(id==="bayar"){f=$('input[name="cara"]')}
     if(f){f.focus()}
   }
   btnLanjut.addEventListener("click",function(){
@@ -837,11 +708,7 @@ svg{display:block;flex:none}
       fokusKeSalah(id);
       return;
     }
-    if(id==="tinjau"&&!D.bayar){selesaiPesan(D.bayarNanti,btnLanjut);return}
-    if(id==="bayar"){
-      var cara=S.cara==="qris"?"QRIS, bayar muka lunas":(S.cara==="transfer"?"Transfer, bayar muka lunas":D.bayarNanti);
-      selesaiPesan(cara,btnLanjut);return;
-    }
+    if(id==="tinjau"){selesaiPesan(btnLanjut);return}
     if(dariTinjau){dariTinjau=false;pergi(IDX.tinjau,true);return}
     pergi(i+1,true);
   });
@@ -860,7 +727,7 @@ svg{display:block;flex:none}
     }
     return "Halo, saya "+S.nama+". Saya memesan "+pesanan().map(function(m){return S.qty[m.nama]+" "+m.satuan+" "+m.nama}).join(", ")+" untuk "+caraTeks().toLowerCase()+" pada "+waktuTeks()+". Kode: "+kode();
   }
-  function selesaiPesan(cara,tombol){
+  function selesaiPesan(tombol){
     tombol.setAttribute("aria-busy","true");tombol.textContent="Memproses\u2026";
     setTimeout(function(){
       tombol.removeAttribute("aria-busy");
@@ -869,8 +736,8 @@ svg{display:block;flex:none}
       $("#k-kode").textContent=kode();
       var rk=$("#k-ringkas");rk.textContent="";
       var baris=INAP
-        ?[["Kamar",S.kamar.nama],["Menginap",tanggalTeks(S.tgl.d)+" sampai "+tanggalTeks(keluar())+", "+S.malam+" malam"],["Tamu",tamuTeks()],["Total menginap",rp(total())],["Nama",S.nama],["Pembayaran",cara]]
-        :[["Pesanan",pesanan().map(function(m){return S.qty[m.nama]+" "+m.satuan+" "+m.nama}).join("\n")],["Penerimaan",waktuTeks()+"\n"+caraTeks()],["Total pesanan",rp(total())],["Nama",S.nama],["Pembayaran",cara]];
+        ?[["Kamar",S.kamar.nama],["Menginap",tanggalTeks(S.tgl.d)+" sampai "+tanggalTeks(keluar())+", "+S.malam+" malam"],["Tamu",tamuTeks()],["Total menginap",rp(total())],["Nama",S.nama],["Pembayaran",D.bayarNanti]]
+        :[["Pesanan",pesanan().map(function(m){return S.qty[m.nama]+" "+m.satuan+" "+m.nama}).join("\n")],["Penerimaan",waktuTeks()+"\n"+caraTeks()],["Total pesanan",rp(total())],["Nama",S.nama],["Pembayaran",D.bayarNanti]];
       baris.forEach(function(r){
         var d=el("div");d.appendChild(el("dt",null,r[0]));d.appendChild(el("dd",null,r[1]));rk.appendChild(d);
       });

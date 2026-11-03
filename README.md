@@ -8,19 +8,19 @@ Halaman statis:
 
 - `/` daftar enam jenis usaha (hub)
 - `/salon/`, `/barbershop/`, `/spa/`, `/penginapan/`, `/katering/`, `/gym/` daftar paket tiap jenis
-- `/{jenis}/paket-{1,2,3}/{skin}/` contoh halaman demo (72 halaman, 4 skin per jenis)
+- `/{jenis}/paket-{1,2}/{skin}/` contoh halaman demo (48 halaman, 4 skin per jenis)
 - `404.html` dan `50x.html` halaman galat
 
 Semua nama, alamat, harga layanan, foto, dan nomor di dalam halaman demo masih data contoh. Harga paket di halaman hub dan halaman jenis adalah harga sebenarnya (nomor WhatsApp pemilik juga nomor asli).
 
-Setiap halaman demo menegaskan statusnya lewat strip di atas header, kartu "Di demo ini / Di website Anda", label "Contoh ..." di tiap bagian, dan penutup. Alur pemesanan di paket-2 dan paket-3 mengikuti jenis usaha:
+Setiap halaman demo menegaskan statusnya lewat strip di atas header, kartu "Di demo ini / Di website Anda", label "Contoh ..." di tiap bagian, dan penutup. Alur pemesanan di paket-2 mengikuti jenis usaha:
 
 - salon, barbershop, spa: pilih layanan, terapis/barber, lalu jadwal
 - penginapan: pilih kamar, tanggal, jumlah malam, dan tamu
 - katering: pilih menu dan jumlah, cara terima (antar atau ambil), tanggal dan jam
 - gym: pilih layanan (harian, kelas, atau sesi trainer), trainer, lalu tanggal dan jam
 
-Paket-3 menambah langkah pembayaran (QRIS atau transfer).
+Paket-3 adalah tampilan custom: dikerjakan per usaha, jadi tidak ada halaman contohnya di katalog ini.
 
 ## Disajikan bagaimana
 
